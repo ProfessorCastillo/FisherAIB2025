@@ -875,7 +875,7 @@
     "reported_discipline": "Operations Management",
     "cleaned_discipline": "Logistics, Operations, and Supply Chain Management",
     "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null
+    "best_junior_faculty_finalist": true
   },
   {
     "title": "Improving Student Engagement and Personalized Learning In Business Analytics with AI",
@@ -1257,7 +1257,7 @@
     "reported_discipline": "Management & Organizations; Psychology",
     "cleaned_discipline": "Management and Human Resources",
     "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null
+    "best_junior_faculty_finalist": true
   },
   {
     "title": "Stress-Energy-Trust (SET): Constraints and Affordances for Ethical Artificial Intelligence Transformation in Management",
@@ -1334,7 +1334,7 @@
     "reported_discipline": "Marketing",
     "cleaned_discipline": "Marketing",
     "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null
+    "best_junior_faculty_finalist": true
   },
   {
     "title": "The AI Echo Chamber: AI-Generated Summaries in Prediction Markets",
@@ -1427,7 +1427,7 @@
     "reported_discipline": "Operations and Supply Chain Management",
     "cleaned_discipline": "Logistics, Operations, and Supply Chain Management",
     "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null
+    "best_junior_faculty_finalist": true
   },
   {
     "title": "The Impact of Industrial AI Agent on B2B Procurement: Evidence from a Field Experiment",
@@ -1613,7 +1613,7 @@
     "reported_discipline": "Information System",
     "cleaned_discipline": "Information Systems",
     "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null
+    "best_junior_faculty_finalist": true
   },
   {
     "title": "When Peers and Chatbots Disagree: How Conflicting Advice Shapes Auditor Voice",
