@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIB 2025 Conference - Presentation Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+            min-width: 320px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .dropdown-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .filter-select:hover {
+            border-color: #4CAF50;
+        }
+
+        .search-type {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-type label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .search-type input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #e0e0e0;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: none;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .clear-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .clear-btn.show {
+            display: block;
+        }
+
+        .clear-filters-btn {
+            grid-column: 1 / -1;
+            padding: 10px 20px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .clear-filters-btn:hover {
+            background: #da190b;
+        }
+
+        .results-info {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .results-container {
+            display: grid;
+            gap: 15px;
+        }
+
+        .result-card {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        .result-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .presentation-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .presenter-name {
+            font-size: 16px;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .presenter-affiliation {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .presentation-details {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .detail-item {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .detail-label {
+            font-weight: 600;
+        }
+
+        .authors-list {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge.phd {
+            background: #FFE5B4;
+            color: #8B4513;
+        }
+
+        .badge.faculty {
+            background: #E6E6FA;
+            color: #4B0082;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .search-input {
+                font-size: 16px;
+                padding: 10px 40px 10px 12px;
+            }
+
+            .presentation-title {
+                font-size: 16px;
+            }
+
+            .dropdown-filters {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .filter-select {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .clear-filters-btn {
+                width: 100%;
+                padding: 12px;
+            }
+
+            .search-type {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-type label {
+                padding: 8px 0;
+            }
+
+            .result-card {
+                padding: 15px;
+            }
+
+            .presentation-details {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AIB 2025 Conference Presentation Search</h1>
+        <div class="subtitle">Search and filter conference presentations</div>
+
+        <div class="search-container">
+            <div class="search-type">
+                <label>
+                    <input type="radio" name="searchType" value="name" checked>
+                    Search by Name
+                </label>
+                <label>
+                    <input type="radio" name="searchType" value="discipline">
+                    Search by Discipline
+                </label>
+                <label>
+                    <input type="radio" name="searchType" value="title">
+                    Search by Title
+                </label>
+                <label>
+                    <input type="radio" name="searchType" value="all">
+                    Search All Fields
+                </label>
+            </div>
+            <div class="search-box">
+                <input type="text" 
+                       class="search-input" 
+                       id="searchInput" 
+                       placeholder="Start typing to search...">
+                <button class="clear-btn" id="clearBtn">×</button>
+            </div>
+        </div>
+
+        <div class="dropdown-filters">
+            <div class="filter-group">
+                <label class="filter-label">Filter by Discipline</label>
+                <select class="filter-select" id="disciplineFilter">
+                    <option value="">All Disciplines</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Room</label>
+                <select class="filter-select" id="roomFilter">
+                    <option value="">All Rooms</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Time</label>
+                <select class="filter-select" id="timeFilter">
+                    <option value="">All Times</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Filter by Award Category</label>
+                <select class="filter-select" id="finalistFilter">
+                    <option value="">All Presentations</option>
+                    <option value="phd">Best PhD Student Paper Finalists</option>
+                    <option value="faculty">Best Junior Faculty Paper Finalists</option>
+                </select>
+            </div>
+            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear All Filters</button>
+        </div>
+
+        <div class="results-info" id="resultsInfo"></div>
+        <div class="results-container" id="resultsContainer"></div>
+    </div>
+
+    <script>
+        // Load presentation data from JSON file
+        let presentations = [];,"authors":[{"name":"Hanyi Min","affiliation":"University of Illinois Urbana-Champaign"},{"name":"Sohee Kim","affiliation":"University of Illinois Urbana-Champaign"},{"name":"Feng Guo","affiliation":"University of Tennessee at Chattanooga"}],"presenter_first_name":"Hanyi","presenter_last_name":"Min","presenter_email":"hanyimin@illinois.edu","presenter_affiliation":"University of Illinois Urbana-Champaign","presentation_room":null,"time":null,"reported_discipline":"Industrial/Organizational Psychology","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Accuracy Obsession: Humans Prioritize Immaterial AI Accuracy Over Their Own Compensation — Unless We Educate Them","authors":[{"name":"Matthew DosSantos DiSorbo","affiliation":"Harvard Business School"},{"name":"Kris Johnson Ferreira","affiliation":"Harvard Business School"}],"presenter_first_name":"Matthew","presenter_last_name":"DosSantos DiSorbo","presenter_email":"mdisorbo@hbs.edu","presenter_affiliation":"Harvard Business School","presentation_room":null,"time":null,"reported_discipline":"Technology and Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Addressing Consumers' Sensitive Attributes in Product Recommendations: An Explainable AI Recommendations System Approach","authors":[{"name":"Piyush Anand","affiliation":"Rice University"}],"presenter_first_name":"Piyush","presenter_last_name":"Anand","presenter_email":"piyush.anand@rice.edu","presenter_affiliation":"Rice University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"AI and the Extended Workday: Productivity, Contracting Efficiency, and Distribution of Rents","authors":[{"name":"Junyoung Park","affiliation":"Auburn University"},{"name":"Wei Jiang","affiliation":"Emory University"},{"name":"Rachel Xiao","affiliation":"Fordham University"},{"name":"Shen Zhang","affiliation":"Fordham University"}],"presenter_first_name":"Junyoung","presenter_last_name":"Park","presenter_email":"jzp0170@auburn.edu","presenter_affiliation":"Auburn University","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"AI in the Pen: How Real-Time AI Writing Guidance Shapes Online Reviews","authors":[{"name":"Zaiyan Wei","affiliation":"Daniels School of Business, Purdue University"},{"name":"Fangyan Wang","affiliation":"Daniels School of Business, Purdue University"},{"name":"Sai Liang","affiliation":"Nankai University"}],"presenter_first_name":"Zaiyan","presenter_last_name":"Wei","presenter_email":"zaiyan@purdue.edu","presenter_affiliation":"Daniels School of Business, Purdue University","presentation_room":null,"time":null,"reported_discipline":"Management Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"AI Self-preferencing in Algorithmic Hiring: Empirical Evidence and Insights","authors":[{"name":"Jiannan Xu","affiliation":"University of Maryland"},{"name":"Gujie Li","affiliation":"National University of Singapore"},{"name":"Jane Yi Jiang","affiliation":"Ohio State University"}],"presenter_first_name":"Jiannan","presenter_last_name":"Xu","presenter_email":"jiannan@umd.edu","presenter_affiliation":"University of Maryland","presentation_room":null,"time":null,"reported_discipline":"Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"AI-Assisted Triage of Patient Messages: A Clinically Calibrated Human–AI Framework for Healthcare Operations","authors":[{"name":"Mohamed Megahed","affiliation":"The Ohio State University"},{"name":"Nathan Craig","affiliation":"The Ohio State University"},{"name":"Aravind Chandrasekaran","affiliation":"The Ohio State University"}],"presenter_first_name":"Mohamed","presenter_last_name":"Megahed","presenter_email":"megahed.4@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Algorithm Aversion in Supplier Selection - The Role of Cognitive Style and Interface Design","authors":[{"name":"Abhinav Hasija","affiliation":"The Ohio State University"},{"name":"Aravind Chandrasekaran","affiliation":"Ohio State University"},{"name":"Terry Esper","affiliation":"Ohio State University"},{"name":"Thomas Goldsby","affiliation":"University of Tennessee"},{"name":"Walter Zinn","affiliation":"Ohio State University"}],"presenter_first_name":"Abhinav","presenter_last_name":"Hasija","presenter_email":"hasija.4@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Logistics","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Amplifying Human Capacity: Institutionalizing Human-in-the-Loop AI at a Land Grant University","authors":[{"name":"Mark Stone","affiliation":"University of Nebraska-Lincoln/ Agricultural Economics"}],"presenter_first_name":"Mark","presenter_last_name":"Stone","presenter_email":"mark.stone@unl.edu","presenter_affiliation":"University of Nebraska-Lincoln/ Agricultural Economics","presentation_room":null,"time":null,"reported_discipline":"Biological Systems Engineering","cleaned_discipline":"Biological Systems Engineering","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Artificial Intelligence, Opportunity, and Regulatory Uncertainty: Implications for Asset Pricing","authors":[{"name":"Kris Shen","affiliation":"The Ohio State University"}],"presenter_first_name":"Kris","presenter_last_name":"Shen","presenter_email":"shen.1732@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Finance","cleaned_discipline":"Finance","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Auditing in the Age of AI: Private Equity vs. the Public Interest","authors":[{"name":"Rajib Doogar","affiliation":"University of Washington Bothell"},{"name":"Sri Ramamoorti","affiliation":"University of Dayton"},{"name":"Cory A. Campbell","affiliation":"Indiana State University"}],"presenter_first_name":"Rajib","presenter_last_name":"Doogar","presenter_email":"doogar@uw.edu","presenter_affiliation":"University of Washington Bothell","presentation_room":null,"time":null,"reported_discipline":"Accounting","cleaned_discipline":"Accounting","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Backpropagating from Customer Value","authors":[{"name":"Midam Kim","affiliation":"ServiceNow"}],"presenter_first_name":"Midam","presenter_last_name":"Kim","presenter_email":"midamkim@gmail.com","presenter_affiliation":"ServiceNow","presentation_room":null,"time":null,"reported_discipline":"Management","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Between Awe and Shame: The Emotional and Interpersonal Consequences of Workplace AI Use","authors":[{"name":"Justin Woodall","affiliation":"University of Georgia"},{"name":"Yihao Liu","affiliation":"University of Georgia"},{"name":"Szu-Han (Joanna) Lin","affiliation":"University of Georgia"},{"name":"Jack Ting-Ju Chiang","affiliation":"Peking University"},{"name":"Zheng Wang","affiliation":"Zhejiang University"}],"presenter_first_name":"Justin","presenter_last_name":"Woodall","presenter_email":"justin.woodall@uga.edu","presenter_affiliation":"University of Georgia","presentation_room":null,"time":null,"reported_discipline":"Management - Organizational Behavior","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Breaking the Sound Barrier: Asymmetric Impacts of AI Dubbing on Multilingual Engagement on YouTube","authors":[{"name":"Minjie Han","affiliation":"University of Rochester"},{"name":"Mikhail Lysyakov","affiliation":"University of Rochester"},{"name":"Yang Gao","affiliation":"University of Illinois Urbana-Champaign"}],"presenter_first_name":"Minjie","presenter_last_name":"Han","presenter_email":"mhan14@simon.rochester.edu","presenter_affiliation":"University of Rochester","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Can an AI Be Sorry? Ameliorating the Human-AI Gap in Customer Service Apologies","authors":[{"name":"Rasam Dorri","affiliation":"University of California, Riverside"},{"name":"Rami Zwick","affiliation":"University of California, Riverside"},{"name":"Ye Li","affiliation":"University of California, Riverside"}],"presenter_first_name":"Rasam","presenter_last_name":"Dorri","presenter_email":"rdorr002@ucr.edu","presenter_affiliation":"University of California, Riverside","presentation_room":null,"time":null,"reported_discipline":"Marketing (Consumer Behavior)","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Collaborative Intelligence: Reconstructing the Invisible Consumer from Fragmented Survey Data","authors":[{"name":"Alice Li","affiliation":"The Ohio State University"},{"name":"Jiyeon Hong","affiliation":"George Mason University"},{"name":"Qing Liu","affiliation":"University of Wisconsin - Madison"}],"presenter_first_name":"Alice","presenter_last_name":"Li","presenter_email":"li.815@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Consumer Strategizing as Human-in-the-Loop: Gaming the Pricing Algorithm","authors":[{"name":"Joshua Gerlick","affiliation":"Case Western Reserve University"}],"presenter_first_name":"Joshua","presenter_last_name":"Gerlick","presenter_email":"joshua.gerlick@case.edu","presenter_affiliation":"Case Western Reserve University","presentation_room":null,"time":null,"reported_discipline":"Management","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Cultural Differences in Receptivity to AI Branding","authors":[{"name":"Archer Yue Pan","affiliation":"Wayne State University"},{"name":"Manoj Thomas","affiliation":"Cornell University"}],"presenter_first_name":"Archer Yue","presenter_last_name":"Pan","presenter_email":"yp388@cornell.edu","presenter_affiliation":"Wayne State University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Deepfakes for Good: Empirical Analysis and AI Agentic Framework for Bias Mitigation","authors":[{"name":"Yizhi Liu","affiliation":"University of Maryland, College Park"},{"name":"Balaji Padmanabhan","affiliation":"University of Maryland, College Park"},{"name":"Siva Viswanathan","affiliation":"University of Maryland, College Park"}],"presenter_first_name":"Yizhi","presenter_last_name":"Liu","presenter_email":"yizhiliu@umd.edu","presenter_affiliation":"University of Maryland, College Park","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Designing Human-Automation Redundancy: Overreliance, Automation Shirking, and the Operator's Dilemma","authors":[{"name":"Doron Cohen","affiliation":"Carnegie Mellon University"},{"name":"Yefim Roth","affiliation":"University of Haifa"},{"name":"Joerg Rieskamp","affiliation":"University of Basel"},{"name":"Markus Schöbel","affiliation":"University of Basel"}],"presenter_first_name":"Doron","presenter_last_name":"Cohen","presenter_email":"doronc@andrew.cmu.edu","presenter_affiliation":"Carnegie Mellon University","presentation_room":null,"time":null,"reported_discipline":"Behavioral sciences","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Developing a Better Mousetrap: An Advanced Machine Learning Approach for Detecting Corporate Accounting Fraud in the Presence of Noisily Labeled Training Data","authors":[{"name":"Waleed Muhanna","affiliation":"Ohio State University"}],"presenter_first_name":"Waleed","presenter_last_name":"Muhanna","presenter_email":"muhanna.1@osu.edu","presenter_affiliation":"Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Does Machine Learning Help Flights Depart on Time? The Value of Machine Learning Tools on Airlines' Operational Performance","authors":[{"name":"Rang Gong","affiliation":"The Ohio State University"},{"name":"Xiang (Sean) Wan","affiliation":"The Ohio State University"}],"presenter_first_name":"Rang","presenter_last_name":"Gong","presenter_email":"gong.611@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Logistics","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Does Machine Learning Shift Job Requirements? Impacts on Entry-Level Opportunities","authors":[{"name":"Yuanyang Liu","affiliation":"University of Tennessee, Knoxville"},{"name":"Chuanren Liu","affiliation":"University of Tennessee"},{"name":"Tingliang Huang","affiliation":"University of Tennessee"}],"presenter_first_name":"Yuanyang","presenter_last_name":"Liu","presenter_email":"yliu191@utk.edu","presenter_affiliation":"University of Tennessee, Knoxville","presentation_room":null,"time":null,"reported_discipline":"Business Analytics","cleaned_discipline":"Business Analytics","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Does Objective Service Quality Guarantee Subjective Service Quality? An AI Application of Facial Recognition on Flight On-Time Performance and Passenger Sentiment","authors":[{"name":"Xiang (Sean) Wan","affiliation":"Fisher College of Business"},{"name":"Hongshuang (Alice) Li","affiliation":"Fisher College of Business"},{"name":"Zenan Zhou","affiliation":"W. P. Carey School of Business"}],"presenter_first_name":"Xiang","presenter_last_name":"Wan","presenter_email":"wan.207@osu.edu","presenter_affiliation":"Fisher College of Business","presentation_room":null,"time":null,"reported_discipline":"Logistics","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Dual Applications of Large Language Models: Specialty Triage and Patient-Friendly Discharge Summaries","authors":[{"name":"Xiguang Liu","affiliation":"University of Florida"},{"name":"Haocheng Ren","affiliation":"University of Michigan"},{"name":"Tianrun Pan","affiliation":"Hackensack Meridian School of Medicine"},{"name":"Tianhe Zhang","affiliation":"University of Wisconsin-Madison"},{"name":"Liangfei Qiu","affiliation":"University of Florida"}],"presenter_first_name":"Xiguang","presenter_last_name":"Liu","presenter_email":"liu.xiguang@ufl.edu","presenter_affiliation":"University of Florida","presentation_room":null,"time":null,"reported_discipline":"Information System and Operation Management","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Emotional Agents: Human-AI Interaction and Emotional Diversity in Adversarial Prompt Engineering","authors":[{"name":"Guohou Shan","affiliation":"Northeastern University"},{"name":"Kofi Arhin","affiliation":"Lehigh University"},{"name":"Yi Tong","affiliation":"University of Florida"},{"name":"Michael Rivera","affiliation":"Lehigh University"},{"name":"Liangfei Qiu","affiliation":"University of Florida"}],"presenter_first_name":"Guohou","presenter_last_name":"Shan","presenter_email":"g.shan@northeastern.edu","presenter_affiliation":"Northeastern University","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Ethics by Co-Design: Embedding Responsibility in Human-in-the-Loop AI Systems","authors":[{"name":"Jordan Etsio","affiliation":"University of the Cumberlands"}],"presenter_first_name":"Jordan","presenter_last_name":"Etsio","presenter_email":"etsioj@gmail.com","presenter_affiliation":"University of the Cumberlands","presentation_room":null,"time":null,"reported_discipline":"Business Administration","cleaned_discipline":"Business Administration","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"From Copy-Paste to Cognitive Lift: A Design Theory for AI-Assisted Mastery","authors":[{"name":"Lori Kendall","affiliation":"The Ohio State University"}],"presenter_first_name":"Lori","presenter_last_name":"Kendall","presenter_email":"kendall.185@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Management","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"From Slip to Spiral: Behavioral Implications of Boundary-Pushing AI-Generated Content for Platform Governance","authors":[{"name":"Lei Wang","affiliation":"Indiana University"},{"name":"Lu Huang","affiliation":"Penn State University"},{"name":"Ram Gopal","affiliation":"University of Warwick"}],"presenter_first_name":"Lei","presenter_last_name":"Wang","presenter_email":"lw84@iu.edu","presenter_affiliation":"Indiana University","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Generative Agent-Based Modeling for Logistics and Supply Chain Management Research","authors":[{"name":"Vince Castillo","affiliation":"The Ohio State University"}],"presenter_first_name":"Vince","presenter_last_name":"Castillo","presenter_email":"castillo.230@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Logistics and Supply Chain Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Generative AI as an Equalizer: Enabling Entrepreneurs in Underrepresented Regions (Roundtable Discussion)","authors":[{"name":"Faisal Altalhi","affiliation":"Kent State University"}],"presenter_first_name":"Faisal","presenter_last_name":"Altalhi","presenter_email":"faltalhi@kent.edu","presenter_affiliation":"Kent State University","presentation_room":null,"time":null,"reported_discipline":"Strategic management","cleaned_discipline":"Strategy","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Human-AI Congruence in Supplier Selection from Public Procurement Bids","authors":[{"name":"Finnegan McKinley","affiliation":"University of Arkansas"},{"name":"Anne Dohmen","affiliation":"Michigan State University"},{"name":"Vince Castillo","affiliation":"The Ohio State University"}],"presenter_first_name":"Finnegan","presenter_last_name":"McKinley","presenter_email":"fam001@uark.edu","presenter_affiliation":"University of Arkansas","presentation_room":null,"time":null,"reported_discipline":"Supply Chain Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"If It's Easier, Why Do I Feel Worse? Impostor Thoughts Triggered By Generative AI Assistance","authors":[{"name":"Hanho Lee","affiliation":"The Ohio State University"},{"name":"Zixu Zhang","affiliation":"University of Arizona"},{"name":"Hun Whee Lee","affiliation":"The Ohio State University"},{"name":"Sarah P. Doyle","affiliation":"University of Arizona"},{"name":"Robert B. Lount, Jr.","affiliation":"The Ohio State University"}],"presenter_first_name":"Hanho","presenter_last_name":"Lee","presenter_email":"lee.10062@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Organizational Behavior","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Improving Recycling Quality through AI & GreenNudges: Evidence from a Field Experiment","authors":[{"name":"Erin McKie","affiliation":"The Ohio State University"},{"name":"Nikhil Sharma","affiliation":"The Ohio State University"},{"name":"Sanghoon Cho","affiliation":"Texas Christian University"},{"name":"Aravind Chandrasekaran","affiliation":"The Ohio State University"}],"presenter_first_name":"Erin","presenter_last_name":"McKie","presenter_email":"mckie.5@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Improving Student Engagement and Personalized Learning In Business Analytics with AI","authors":[{"name":"John Draper","affiliation":"The Ohio State University"},{"name":"Ismael Talke","affiliation":"The Ohio State University"}],"presenter_first_name":"John","presenter_last_name":"Draper","presenter_email":"draper.34@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Business Analytics","cleaned_discipline":"Business Analytics","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Information-Seeking from AI Chatbots: Tradeoff between Judgment and Misinformation Concerns under Stigma","authors":[{"name":"Aravinda Garimella","affiliation":"University of Illinois Urbana-Champaign"},{"name":"Behnaz Bojd","affiliation":"University of California, Irvine"},{"name":"Haonan Yin","affiliation":"University of California, Irvine"}],"presenter_first_name":"Aravinda","presenter_last_name":"Garimella","presenter_email":"aravinda@illinois.edu","presenter_affiliation":"University of Illinois Urbana-Champaign","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"It's Not Just What You Say, But When You Say It","authors":[{"name":"Max Tu","affiliation":"The Ohio State University"},{"name":"Alice Li","affiliation":"The Ohio State University"},{"name":"Greg M. Allenby","affiliation":"The Ohio State University"}],"presenter_first_name":"Max","presenter_last_name":"Tu","presenter_email":"tu.195@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"LLM-Assisted Formalization Enables Deterministic Detection of Statutory Inconsistency in the Internal Revenue Code","authors":[{"name":"Steven Keith Platt","affiliation":"Loyola University Chicago"},{"name":"Borchuluun Yadamsuren","affiliation":"Loyola University Chicago"},{"name":"Miguel Diaz","affiliation":"Loyola University Chicago"}],"presenter_first_name":"Steven Keith","presenter_last_name":"Platt","presenter_email":"splatt1@luc.edu","presenter_affiliation":"Loyola University Chicago","presentation_room":null,"time":null,"reported_discipline":"Bussiness AI","cleaned_discipline":"Business Analytics","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Large Language Models in the Workplace: The Role of Social Class Background","authors":[{"name":"Yao Yao","affiliation":"University of Houston"},{"name":"Meng Li","affiliation":"University of Houston"},{"name":"Lai Wei","affiliation":"Boston College"}],"presenter_first_name":"Yao","presenter_last_name":"Yao","presenter_email":"yyao24@cougarnet.uh.edu","presenter_affiliation":"University of Houston","presentation_room":null,"time":null,"reported_discipline":"Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Leadership in the Loop: Business Roles in Responsible AI Innovation","authors":[{"name":"Shixian Xie","affiliation":"Carnegie Mellon University"},{"name":"John Zimmerman","affiliation":"Carnegie Mellon University"},{"name":"Motahhare Eslami","affiliation":"Carnegie Mellon University"}],"presenter_first_name":"Shixian","presenter_last_name":"Xie","presenter_email":"shixianx@andrew.cmu.edu","presenter_affiliation":"Carnegie Mellon University","presentation_room":null,"time":null,"reported_discipline":"Human-Computer Interaction","cleaned_discipline":"Human-Computer Interaction","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Modeling the Interviewer: Leveraging LLMs to Uncover Personality Mismatch Effects in Interview Assessment","authors":[{"name":"Rachit Kamdar","affiliation":"University of Maryland"},{"name":"Balaji Padmanabhan","affiliation":"University of Maryland"},{"name":"Siva Viswanathan","affiliation":"University of Maryland"}],"presenter_first_name":"Rachit","presenter_last_name":"Kamdar","presenter_email":"rkamdar@umd.edu","presenter_affiliation":"University of Maryland","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Qualitative Coding with Hybrid AI and Human-in-the-Loop","authors":[{"name":"Christina Dressel","affiliation":"John Glenn College of Public Affairs, The Ohio State University"},{"name":"Megan LePere-Schloop","affiliation":"The Ohio State University"},{"name":"Lucia Gomez Teijeiro","affiliation":"Bern University of Applied Sciences and University of Geneva"}],"presenter_first_name":"Christina","presenter_last_name":"Dressel","presenter_email":"dressel.39@buckeyemail.osu.edu","presenter_affiliation":"John Glenn College of Public Affairs, The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Management","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Responsible AI for Strategic Decision-Making and Capacity Building in Agribusiness","authors":[{"name":"Asa B. Stone","affiliation":"University of Nebraska-Lincoln/Agricultural Economics"},{"name":"Cristián Kremer F.","affiliation":"Universidad de Chile"}],"presenter_first_name":"Asa B.","presenter_last_name":"Stone","presenter_email":"astone10@unl.edu","presenter_affiliation":"University of Nebraska-Lincoln/Agricultural Economics","presentation_room":null,"time":null,"reported_discipline":"Agricultural Economics","cleaned_discipline":"Agricultural Economics","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Rethinking Professional Ethics in Accounting for the Age of Agentic AI: Safeguarding Accountability and the Human-in-the-Loop (Roundtable Discussion)","authors":[{"name":"Sridhar Ramamoorti","affiliation":"University of Dayton"},{"name":"George R. Botic","affiliation":"Public Company Accounting Oversight Board"},{"name":"Mark DeLong","affiliation":"n/a"},{"name":"William E. Miller","affiliation":"KPMG"},{"name":"Micael Voinovich","affiliation":"Schneider Downs"}],"presenter_first_name":"Sridhar","presenter_last_name":"Ramamoorti","presenter_email":"sramamoorti1@udayton.edu","presenter_affiliation":"University of Dayton","presentation_room":null,"time":null,"reported_discipline":"Accounting & MIS","cleaned_discipline":"Accounting","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Reuniting Forcibly Separated Families Through Shared Memories","authors":[{"name":"Huifeng Su","affiliation":"Yale University"},{"name":"Lesley Meng","affiliation":"Yale School of Management"},{"name":"Edieal J. Pinker","affiliation":"Yale School of Management"}],"presenter_first_name":"Huifeng","presenter_last_name":"Su","presenter_email":"huifeng.su@yale.edu","presenter_affiliation":"Yale University","presentation_room":null,"time":null,"reported_discipline":"Operations","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Scalable Virtual Influencer Creation Using LLMs, VAEs, and Stable Diffusion Models: A Human-in-the-Loop Generative Framework","authors":[{"name":"Yuan Lu","affiliation":"The Ohio State University"},{"name":"Alice Li","affiliation":"The Ohio State University"},{"name":"Greg Allenby","affiliation":"The Ohio State University"}],"presenter_first_name":"Yuan","presenter_last_name":"Lu","presenter_email":"lu.2497@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Scaling Human Capital with Artificial Intelligence: Codified Selves and Value Creation and Appropriation","authors":[{"name":"Natarajan Balasubramanian","affiliation":"Syracuse University"},{"name":"Prithwiraj Choudhury","affiliation":"London School of Economics"},{"name":"Mingtao Xu","affiliation":"Tsinghua University"}],"presenter_first_name":"Natarajan","presenter_last_name":"Balasubramanian","presenter_email":"nabalasu@syr.edu","presenter_affiliation":"Syracuse University","presentation_room":null,"time":null,"reported_discipline":"Strategic Management","cleaned_discipline":"Strategy","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Strategic Algorithmic Advice Taking","authors":[{"name":"Tobias Rebholz","affiliation":"Duke University"},{"name":"Maxwell Uphoff","affiliation":"University of Minnesota Twin Cities"},{"name":"Christian H. R. Bernges","affiliation":"University of Tübingen"},{"name":"Florian Scholten","affiliation":"University of Tübingen"}],"presenter_first_name":"Tobias","presenter_last_name":"Rebholz","presenter_email":"tobias.rebholz@duke.edu","presenter_affiliation":"Duke University","presentation_room":null,"time":null,"reported_discipline":"Management & Organizations; Psychology","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Stress-Energy-Trust (SET): Constraints and Affordances for Ethical Artificial Intelligence Transformation in Management","authors":[{"name":"Huan (Harry) Wang","affiliation":"Siena University"},{"name":"Michael D. Johnson","affiliation":"University of Washington"}],"presenter_first_name":"Huan","presenter_last_name":"Wang","presenter_email":"hwang@siena.edu","presenter_affiliation":"Siena University","presentation_room":null,"time":null,"reported_discipline":"Organizational Behavior","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Teaching Algorithms the Art of the Deal: Lessons from Reverse Auction Blunders","authors":[{"name":"Piyush Shah","affiliation":"Florida Gulf Coast University"},{"name":"Irita Mishra","affiliation":"University of Wisconsin-River Falls"},{"name":"Senali Amarasuriya","affiliation":"Middle Tennessee State University"}],"presenter_first_name":"Piyush","presenter_last_name":"Shah","presenter_email":"pshah@fgcu.edu","presenter_affiliation":"Florida Gulf Coast University","presentation_room":null,"time":null,"reported_discipline":"Supply Chain Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The Adoption and Efficacy of Large Language Models: Evidence From Consumer Complaints in the Financial Industry","authors":[{"name":"Minkyu Shin","affiliation":"City University of Hong Kong"},{"name":"Jin Kim","affiliation":"Northeastern University"},{"name":"Jiwoong Shin","affiliation":"Yale School of Management"}],"presenter_first_name":"Minkyu","presenter_last_name":"Shin","presenter_email":"minkshin@cityu.edu.hk","presenter_affiliation":"City University of Hong Kong","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The AI Echo Chamber: AI-Generated Summaries in Prediction Markets","authors":[{"name":"Yi Tong","affiliation":"University of Florida"},{"name":"Kaiyu Zhang","affiliation":"University of Florida"},{"name":"Qili Wang","affiliation":"University of Florida"},{"name":"Liangfei Qiu","affiliation":"University of Florida"}],"presenter_first_name":"Yi","presenter_last_name":"Tong","presenter_email":"Yi.Tong@warrington.ufl.edu","presenter_affiliation":"University of Florida","presentation_room":null,"time":null,"reported_discipline":"Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The AI Management Paradox: How Algorithmic Performance Systems Drive Efficiency but Erode Consumer Trust","authors":[{"name":"Qiaowen Guo","affiliation":"Washington University in St. Louis"},{"name":"Xiang Hui","affiliation":"Washington University in St. Louis"},{"name":"Fuqiang Zhang","affiliation":"Washington University in St. Louis"},{"name":"Tianjuan Feng","affiliation":"Fudan University"}],"presenter_first_name":"Qiaowen","presenter_last_name":"Guo","presenter_email":"qiaowenguo@wustl.edu","presenter_affiliation":"Washington University in St. Louis","presentation_room":null,"time":null,"reported_discipline":"Supply Chain, Operations, and Technology","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The Impact of AI in Operations and Supply Chain on Firm Productivity","authors":[{"name":"Jafar Namdar","affiliation":"Michigan State University"},{"name":"Yuanyang Liu","affiliation":"The University of Tennessee, Knoxville"},{"name":"Nima Safaei","affiliation":"The Ohio State University"},{"name":"Sachin Modi","affiliation":"University of Cincinnati"}],"presenter_first_name":"Nima","presenter_last_name":"Safaei","presenter_email":"safaei.3@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Operations and Supply Chain Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The Impact of Industrial AI Agent on B2B Procurement: Evidence from a Field Experiment","authors":[{"name":"Ricky Tan","affiliation":"China Europe International Business School"},{"name":"Shichen Zhang","affiliation":"Tianjin University"},{"name":"Ruyu Chen","affiliation":"Stanford University"},{"name":"Xiande Zhao","affiliation":"China Europe International Business School"}],"presenter_first_name":"Ricky","presenter_last_name":"Tan","presenter_email":"yrtan@ceibs.edu","presenter_affiliation":"China Europe International Business School","presentation_room":null,"time":null,"reported_discipline":"Management Information Systems","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The Impact of Responsible AI Management (RAIM) on Organizational and Market Performance","authors":[{"name":"Christopher Yaluma","affiliation":"The Ohio State University"},{"name":"Aravind Chandrasekaran","affiliation":"The Ohio State University"},{"name":"Dennis Hirsch","affiliation":"The Ohio State University"},{"name":"Rakesh Mallipeddi","affiliation":"The Ohio State University"}],"presenter_first_name":"Christopher","presenter_last_name":"Yaluma","presenter_email":"yaluma.1@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Public Policy/Law","cleaned_discipline":"Public Policy/Law","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"The Intelligence May Be Artificial, but the Story Must Be Human: Rethinking Audit Value, Ethical Pricing, and Client Perceptions in AI-Enhanced Professional Services","authors":[{"name":"Kristina Harrison","affiliation":"Indiana University"},{"name":"Sri Ramamoorti","affiliation":"University of Dayton"},{"name":"Cory Campbell","affiliation":"Indiana State University"}],"presenter_first_name":"Kristina","presenter_last_name":"Harrison","presenter_email":"Kriharr@iu.edu","presenter_affiliation":"Indiana University","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"When Age Helps or Hinders AI Use: A Goal Orientation and Appraisal Perspective","authors":[{"name":"Hun Whee Lee","affiliation":"The Ohio State University"},{"name":"Christopher Dishop","affiliation":"Auburn University"},{"name":"Nai-Wen Chi","affiliation":"National Sun Yat-Sen University"},{"name":"Yonghwan Lee","affiliation":"University of Seoul"},{"name":"Wu Wei","affiliation":"Wuhan University"},{"name":"Ke Michael Mai","affiliation":"China Europe International Business School"}],"presenter_first_name":"Hun","presenter_last_name":"Lee","presenter_email":"lee.7313@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Organizational Behavior","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"What Do Early-Stage Investors Ask? An LLM Analysis of Expert Calls","authors":[{"name":"Victor Lyonnet","affiliation":"University of Michigan"},{"name":"Amin Shams","affiliation":"The Ohio State University"},{"name":"Shaojun Zhang","affiliation":"The Ohio State University"}],"presenter_first_name":"Amin","presenter_last_name":"Shams","presenter_email":"shams.22@osu.edu","presenter_affiliation":"The Ohio State University","presentation_room":null,"time":null,"reported_discipline":"Finance","cleaned_discipline":"Finance","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"When Influencers Delegate Replies: How Social AI Agents Shape User Engagement","authors":[{"name":"Maggie Zhang","affiliation":"University of Virginia, McIntire School of Commerce"},{"name":"Yang Gao","affiliation":"University of Illinois at Urbana-Champaign"},{"name":"Jingjing Li","affiliation":"University of Virginia"},{"name":"Steven L. Johnson","affiliation":"University of Virginia"}],"presenter_first_name":"Maggie","presenter_last_name":"Zhang","presenter_email":"ffx3ab@virginia.edu","presenter_affiliation":"University of Virginia, McIntire School of Commerce","presentation_room":null,"time":null,"reported_discipline":"Information System","cleaned_discipline":"Information Systems","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"When Peers and Chatbots Disagree: How Conflicting Advice Shapes Auditor Voice","authors":[{"name":"Dongsheng Li","affiliation":"University of Wisconsin–Madison"},{"name":"Emily Griffith","affiliation":"University of Wisconsin-Madison"},{"name":"Dan Zhou","affiliation":"University of Illinois Urbana-Champaign"}],"presenter_first_name":"Dongsheng","presenter_last_name":"Li","presenter_email":"dongsheng.li@wisc.edu","presenter_affiliation":"University of Wisconsin–Madison","presentation_room":null,"time":null,"reported_discipline":"Accounting","cleaned_discipline":"Accounting","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"When Told by a Machine: Human Perception and Responses to AI-Generated Information and Misinformation","authors":[{"name":"Lan Wu","affiliation":"California State University, East Bay"},{"name":"Richard R. Klink","affiliation":"Loyola University Maryland"},{"name":"Jing-Wen Yang","affiliation":"California State University, East Bay"}],"presenter_first_name":"Lan","presenter_last_name":"Wu","presenter_email":"lan.wu@csueastbay.edu","presenter_affiliation":"California State University, East Bay","presentation_room":null,"time":null,"reported_discipline":"Marketing","cleaned_discipline":"Marketing","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Why the Best Machine May Not Be the Best: Incentivizing Human–Machine Collaboration","authors":[{"name":"Xiaotong Guan","affiliation":"The University of Texas at Dallas"},{"name":"Anyan Qi","affiliation":"The University of Texas at Dallas"},{"name":"Shouqiang Wang","affiliation":"The University of Texas at Dallas"}],"presenter_first_name":"Xiaotong","presenter_last_name":"Guan","presenter_email":"xiaotong.guan@utdallas.edu","presenter_affiliation":"The University of Texas at Dallas","presentation_room":null,"time":null,"reported_discipline":"Operations Management","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Why Students Reject AI for Human Counselors in College Applications: A Field Experiment","authors":[{"name":"Hemanshu Das","affiliation":"Yale School of Management"},{"name":"Sofoklis Goulas","affiliation":"Yale School of Management"},{"name":"Faidra Monachou","affiliation":"Yale School of Management"}],"presenter_first_name":"Hemanshu","presenter_last_name":"Das","presenter_email":"hemanshu.das@yale.edu","presenter_affiliation":"Yale School of Management","presentation_room":null,"time":null,"reported_discipline":"Operations Research","cleaned_discipline":"Logistics, Operations, and Supply Chain Management","best_phd_finalist":null,"best_junior_faculty_finalist":null},{"title":"Work Design for AI Agents: Tool and Socio-Technical System Design for AI Performance","authors":[{"name":"Cory Eisenhard","affiliation":"Michigan State University"},{"name":"Frederick P. Morgeson","affiliation":"Michigan State University"},{"name":"Dhruv K. Toprani","affiliation":"Michigan State University"}],"presenter_first_name":"Cory","presenter_last_name":"Eisenhard","presenter_email":"coryeisenhard@gmail.com","presenter_affiliation":"Michigan State University","presentation_room":null,"time":null,"reported_discipline":"Management","cleaned_discipline":"Management","best_phd_finalist":null,"best_junior_faculty_finalist":null}];
+
+        // Application state
+        let currentSearchType = 'name';
+        let searchTerm = '';
+        let filters = {
+            discipline: '',
+            room: '',
+            time: '',
+            finalist: ''
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            setupEventListeners();
+            populateDropdowns();
+            applyFilters();
+        }
+
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearBtn');
+            const searchTypeRadios = document.querySelectorAll('input[name="searchType"]');
+
+            searchInput.addEventListener('input', handleSearch);
+            clearBtn.addEventListener('click', clearSearch);
+
+            searchTypeRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    currentSearchType = e.target.value;
+                    updateSearchPlaceholder();
+                    handleSearch();
+                });
+            });
+
+            // Add dropdown filter listeners
+            document.getElementById('disciplineFilter').addEventListener('change', (e) => {
+                filters.discipline = e.target.value;
+                applyFilters();
+            });
+
+            document.getElementById('roomFilter').addEventListener('change', (e) => {
+                filters.room = e.target.value;
+                applyFilters();
+            });
+
+            document.getElementById('timeFilter').addEventListener('change', (e) => {
+                filters.time = e.target.value;
+                applyFilters();
+            });
+
+            document.getElementById('finalistFilter').addEventListener('change', (e) => {
+                filters.finalist = e.target.value;
+                applyFilters();
+            });
+        }
+
+        function updateSearchPlaceholder() {
+            const searchInput = document.getElementById('searchInput');
+            const placeholders = {
+                name: 'Search by presenter or author name...',
+                discipline: 'Search by discipline...',
+                title: 'Search by presentation title...',
+                all: 'Search across all fields...'
+            };
+            searchInput.placeholder = placeholders[currentSearchType];
+        }
+
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchTerm = searchInput.value.toLowerCase().trim();
+            
+            // Show/hide clear button
+            const clearBtn = document.getElementById('clearBtn');
+            clearBtn.classList.toggle('show', searchTerm.length > 0);
+
+            // Apply all filters
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let filtered = presentations;
+
+            // Apply search term filter
+            if (searchTerm) {
+                filtered = filterPresentations(searchTerm);
+            }
+
+            // Apply discipline dropdown filter (cleaned_discipline only)
+            if (filters.discipline) {
+                filtered = filtered.filter(p => 
+                    p.cleaned_discipline === filters.discipline
+                );
+            }
+
+            // Apply room filter
+            if (filters.room) {
+                filtered = filtered.filter(p => {
+                    const room = p.presentation_room || 'TBD';
+                    return room === filters.room;
+                });
+            }
+
+            // Apply time filter
+            if (filters.time) {
+                filtered = filtered.filter(p => {
+                    const time = p.time || 'TBD';
+                    return time === filters.time;
+                });
+            }
+
+            // Apply finalist filter
+            if (filters.finalist) {
+                filtered = filtered.filter(p => {
+                    if (filters.finalist === 'phd') {
+                        return p.best_phd_finalist === true;
+                    } else if (filters.finalist === 'faculty') {
+                        return p.best_junior_faculty_finalist === true;
+                    }
+                    return true;
+                });
+            }
+
+            displayResults(filtered);
+            updateResultsInfo(filtered.length);
+        }
+
+        function filterPresentations(term) {
+            if (!term) return presentations;
+
+            return presentations.filter(presentation => {
+                if (currentSearchType === 'name') {
+                    // Search presenter
+                    const presenterName = `${presentation.presenter_first_name} ${presentation.presenter_last_name}`.toLowerCase();
+                    if (presenterName.includes(term)) return true;
+                    
+                    // Search all authors
+                    return presentation.authors.some(author => 
+                        author.name.toLowerCase().includes(term)
+                    );
+                } else if (currentSearchType === 'discipline') {
+                    return presentation.cleaned_discipline.toLowerCase().includes(term) ||
+                           presentation.reported_discipline.toLowerCase().includes(term);
+                } else if (currentSearchType === 'title') {
+                    return presentation.title.toLowerCase().includes(term);
+                } else if (currentSearchType === 'all') {
+                    // Search everything
+                    const presenterName = `${presentation.presenter_first_name} ${presentation.presenter_last_name}`.toLowerCase();
+                    const allAuthors = presentation.authors.map(a => a.name.toLowerCase()).join(' ');
+                    const searchString = `${presentation.title} ${presenterName} ${allAuthors} ${presentation.cleaned_discipline} ${presentation.reported_discipline} ${presentation.presenter_affiliation}`.toLowerCase();
+                    return searchString.includes(term);
+                }
+            });
+        }
+
+        function populateDropdowns() {
+            // Populate discipline dropdown
+            const disciplines = new Set();
+            const rooms = new Set();
+            const times = new Set();
+
+            presentations.forEach(p => {
+                if (p.cleaned_discipline) disciplines.add(p.cleaned_discipline);
+                rooms.add(p.presentation_room || 'TBD');
+                times.add(p.time || 'TBD');
+            });
+
+            // Sort and populate discipline dropdown
+            const disciplineSelect = document.getElementById('disciplineFilter');
+            Array.from(disciplines).sort().forEach(discipline => {
+                const count = presentations.filter(p => 
+                    p.cleaned_discipline === discipline
+                ).length;
+                const option = document.createElement('option');
+                option.value = discipline;
+                option.textContent = `${discipline} (${count})`;
+                disciplineSelect.appendChild(option);
+            });
+
+            // Populate room dropdown
+            const roomSelect = document.getElementById('roomFilter');
+            Array.from(rooms).sort().forEach(room => {
+                const count = presentations.filter(p => 
+                    (p.presentation_room || 'TBD') === room
+                ).length;
+                const option = document.createElement('option');
+                option.value = room;
+                option.textContent = `${room} (${count})`;
+                roomSelect.appendChild(option);
+            });
+
+            // Populate time dropdown
+            const timeSelect = document.getElementById('timeFilter');
+            Array.from(times).sort().forEach(time => {
+                const count = presentations.filter(p => 
+                    (p.time || 'TBD') === time
+                ).length;
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = `${time} (${count})`;
+                timeSelect.appendChild(option);
+            });
+        }
+
+        function displayResults(results) {
+            const container = document.getElementById('resultsContainer');
+            
+            if (results.length === 0) {
+                container.innerHTML = '<div class="no-results">No presentations found. Try adjusting your search.</div>';
+                return;
+            }
+
+            container.innerHTML = results.map(presentation => {
+                const room = presentation.presentation_room || 'TBD';
+                const time = presentation.time || 'TBD';
+                
+                // Get all author names
+                const authorNames = presentation.authors.map(a => a.name).join(', ');
+                
+                // Create badges for finalists
+                let badges = '';
+                if (presentation.best_phd_finalist) {
+                    badges += '<span class="badge phd">PhD Finalist</span>';
+                }
+                if (presentation.best_junior_faculty_finalist) {
+                    badges += '<span class="badge faculty">Faculty Finalist</span>';
+                }
+
+                return `
+                    <div class="result-card">
+                        <div class="presentation-title">
+                            ${highlightText(presentation.title)}${badges}
+                        </div>
+                        <div class="presenter-name">
+                            ${presentation.presenter_first_name} ${presentation.presenter_last_name}
+                        </div>
+                        <div class="presenter-affiliation">
+                            ${presentation.presenter_affiliation}
+                        </div>
+                        <div class="authors-list">
+                            <strong>All Authors:</strong> ${highlightText(authorNames)}
+                        </div>
+                        <div class="presentation-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Room:</span> ${room}
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Time:</span> ${time}
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Discipline:</span> ${highlightText(presentation.cleaned_discipline)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function highlightText(text) {
+            if (!searchTerm || currentSearchType === 'discipline') return text;
+            
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function updateResultsInfo(count) {
+            const info = document.getElementById('resultsInfo');
+            // Check if any filters are active
+            const hasActiveFilters = searchTerm || 
+                                   filters.discipline || 
+                                   filters.room || 
+                                   filters.time || 
+                                   filters.finalist;
+            
+            if (hasActiveFilters) {
+                info.textContent = `Found ${count} presentation${count !== 1 ? 's' : ''}`;
+            } else {
+                info.textContent = `Showing all ${count} presentations`;
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            searchTerm = '';
+            handleSearch();
+        }
+
+        function clearAllFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('disciplineFilter').value = '';
+            document.getElementById('roomFilter').value = '';
+            document.getElementById('timeFilter').value = '';
+            document.getElementById('finalistFilter').value = '';
+            searchTerm = '';
+            filters = {
+                discipline: '',
+                room: '',
+                time: '',
+                finalist: ''
+            };
+            applyFilters();
+        }
+    </script>
+</body>
+</html>
