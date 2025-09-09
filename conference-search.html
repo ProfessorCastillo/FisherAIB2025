@@ -71,6 +71,7 @@
             background: white;
             cursor: pointer;
             transition: border-color 0.3s;
+            width: 100%;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -79,6 +80,11 @@
             background-position: right 8px center;
             background-size: 16px;
             padding-right: 35px;
+        }
+
+        /* Force mobile browsers to respect our styling */
+        .filter-select::-ms-expand {
+            display: none;
         }
 
         .filter-select:focus {
@@ -278,6 +284,14 @@
             color: #f44336;
         }
 
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            .filter-select {
+                background: white;
+                -webkit-appearance: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -304,6 +318,8 @@
             .filter-select {
                 font-size: 16px;
                 padding: 10px;
+                width: 100%;
+                min-height: 44px;
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -312,6 +328,12 @@
                 background-position: right 8px center;
                 background-size: 16px;
                 padding-right: 35px;
+                border-radius: 8px;
+            }
+
+            /* Force mobile browsers to respect our styling */
+            .filter-select::-ms-expand {
+                display: none;
             }
 
             .clear-filters-btn {
