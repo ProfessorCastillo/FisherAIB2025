@@ -18,4 +18,4 @@ A searchable database of presentations for the AIB 2025 Conference.
 3. Open `http://localhost:8000/conference-search.html`
 
 ## Live Demo
-Visit: [https://YOUR-USERNAME.github.io/FisherAIB2025/conference-search.html](https://YOUR-USERNAME.github.io/FisherAIB2025/conference-search.html)
+Visit: [https://ProfessorCastillo.github.io/FisherAIB2025/conference-search.html](https://YOUR-USERNAME.github.io/FisherAIB2025/conference-search.html)
