@@ -4,6 +4,9 @@ Q1/
 # Exclude specific Python files
 run_analytics.py
 updateJSON.py
+clean_abstracts.py
+create_enhanced_json.py
+extract_pdf_abstracts.py
 
 # Exclude model configuration file
 2025-09-09-model.txt
@@ -11,8 +14,11 @@ updateJSON.py
 # Exclude csv
 invites.csv
 
-AIB_presentation_list backup.jsonAIB_presentation_list_cleaned_abstracts backup.jsonAIB_presentation_list_enhanced.jsonAIB_presentation_list_with_abstracts.jsonAIB_presentation_list.jsonclean_abstracts.py
+# Exclude all JSON files
+*.json
+# But keep the cleaned abstracts file (this is what will be used by the website)
+!AIB_presentation_list_cleaned_abstracts.json
 
+# Exclude backup files
+*backup*
 conference-search backup.html
-create_enhanced_json.py
-extract_pdf_abstracts.py
