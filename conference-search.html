@@ -233,6 +233,14 @@
             color: #666;
             margin-bottom: 10px;
         }
+        
+        .session-info {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
 
         .presentation-details {
             display: flex;
@@ -742,6 +750,7 @@
             container.innerHTML = results.map((presentation, index) => {
                 const room = presentation.presentation_room || 'TBD';
                 const time = presentation.time || 'TBD';
+                const date = presentation.date || 'TBD';
                 
                 // Get all author names with affiliations
                 const authorNames = presentation.authors.map(a => 
@@ -781,15 +790,21 @@
                         <div class="presenter-affiliation">
                             ${presentation.presenter_affiliation}
                         </div>
+                        <div class="session-info">
+                            <strong>Session:</strong> ${presentation.session_title || 'TBD'}
+                        </div>
                         <div class="authors-list">
                             <strong>All Authors:</strong> ${highlightText(authorNames)}
                         </div>
                         <div class="presentation-details">
                             <div class="detail-item">
-                                <span class="detail-label">Room:</span> ${room}
+                                <span class="detail-label">Date:</span> ${date}
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Time:</span> ${time}
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Room:</span> ${room}
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Discipline:</span> ${highlightText(presentation.cleaned_discipline)}

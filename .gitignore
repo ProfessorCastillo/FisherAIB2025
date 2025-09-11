@@ -25,3 +25,7 @@ conference-search backup.html
 
 # Exclude knowledge graph
 knowledge_graph/
+
+# Exclude housekeeping/utility scripts
+check_schedule_match.py
+merge_schedule_data.py
