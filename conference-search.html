@@ -260,6 +260,60 @@
             color: #4B0082;
         }
 
+        .abstract-toggle {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.3s;
+        }
+
+        .abstract-toggle:hover {
+            background: #45a049;
+        }
+
+        .abstract-toggle.expanded {
+            background: #666;
+        }
+
+        .abstract-content {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 3px solid #4CAF50;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            display: none;
+        }
+
+        .abstract-content.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .abstract-label {
+            font-weight: 600;
+            color: #4CAF50;
+            margin-bottom: 8px;
+        }
+
         .no-results {
             text-align: center;
             padding: 40px;
@@ -459,7 +513,7 @@
         async function init() {
             try {
                 // Load the JSON data
-                const response = await fetch('AIB_presentation_list.json');
+                const response = await fetch('AIB_presentation_list_cleaned_abstracts.json');
                 if (!response.ok) {
                     throw new Error('Failed to load presentation data');
                 }
@@ -668,12 +722,14 @@
                 return;
             }
 
-            container.innerHTML = results.map(presentation => {
+            container.innerHTML = results.map((presentation, index) => {
                 const room = presentation.presentation_room || 'TBD';
                 const time = presentation.time || 'TBD';
                 
-                // Get all author names
-                const authorNames = presentation.authors.map(a => a.name).join(', ');
+                // Get all author names with affiliations
+                const authorNames = presentation.authors.map(a => 
+                    `${a.name}${a.affiliation ? ` (${a.affiliation})` : ''}`
+                ).join(', ');
                 
                 // Create badges for finalists
                 let badges = '';
@@ -683,6 +739,19 @@
                 if (presentation.best_junior_faculty_finalist) {
                     badges += '<span class="badge faculty">Junior Faculty Finalist</span>';
                 }
+                
+                // Check if abstract exists
+                const hasAbstract = presentation.abstract && presentation.abstract.trim().length > 0;
+                const abstractButton = hasAbstract ? 
+                    `<button class="abstract-toggle" onclick="toggleAbstract(${index})" id="toggle-${index}">
+                        Show Abstract
+                    </button>` : '';
+                
+                const abstractContent = hasAbstract ? 
+                    `<div class="abstract-content" id="abstract-${index}">
+                        <div class="abstract-label">Abstract</div>
+                        ${presentation.abstract}
+                    </div>` : '';
 
                 return `
                     <div class="result-card">
@@ -709,6 +778,8 @@
                                 <span class="detail-label">Discipline:</span> ${highlightText(presentation.cleaned_discipline)}
                             </div>
                         </div>
+                        ${abstractButton}
+                        ${abstractContent}
                     </div>
                 `;
             }).join('');
@@ -757,6 +828,23 @@
                 finalist: ''
             };
             applyFilters();
+        }
+        
+        function toggleAbstract(index) {
+            const abstractDiv = document.getElementById(`abstract-${index}`);
+            const toggleBtn = document.getElementById(`toggle-${index}`);
+            
+            if (abstractDiv && toggleBtn) {
+                if (abstractDiv.classList.contains('show')) {
+                    abstractDiv.classList.remove('show');
+                    toggleBtn.classList.remove('expanded');
+                    toggleBtn.textContent = 'Show Abstract';
+                } else {
+                    abstractDiv.classList.add('show');
+                    toggleBtn.classList.add('expanded');
+                    toggleBtn.textContent = 'Hide Abstract';
+                }
+            }
         }
 
         // Start the app when the page loads
