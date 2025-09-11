@@ -11,7 +11,7 @@ updateJSON.py
 # Exclude csv
 invites.csv
 
-AIB_presentation_list backup.jsonAIB_presentation_list_cleaned_abstracts backup.jsonAIB_presentation_list_enhanced.jsonAIB_presentation_list_with_abstracts.jsonAIB_presentation_list.jsonclean_abstracts.py
+AIB_presentation_list backup.jsonAIB_presentation_list_cleaned_abstracts backup.jsonAIB_presentation_list_enhanced.jsonAIB_presentation_list_with_abstracts.jsonAIB_presentation_list.jsonclean_abstracts.py
 
 conference-search backup.html
 create_enhanced_json.py
