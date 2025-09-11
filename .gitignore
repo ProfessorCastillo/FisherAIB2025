@@ -1,0 +1,9 @@
+# Exclude Q1 directory and its contents
+Q1/
+
+# Exclude specific Python files
+run_analytics.py
+updateJSON.py
+
+# Exclude model configuration file
+2025-09-09-model.txt
