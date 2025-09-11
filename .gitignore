@@ -22,3 +22,6 @@ invites.csv
 # Exclude backup files
 *backup*
 conference-search backup.html
+
+# Exclude knowledge graph
+knowledge_graph/
