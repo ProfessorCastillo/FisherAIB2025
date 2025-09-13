@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisher AIB Conference 2025 - Complete Schedule October 2-3</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="2025FCOB_AIinBusiness_ico.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="2025FCOB_AIinBusiness_ico.ico">
+    
+    <!-- Apple Touch Icon for iOS home screen -->
+    <link rel="apple-touch-icon" href="2025FCOB_AIinBusiness.png">
+    
+    <!-- Android home screen icon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="2025FCOB_AIinBusiness.png">
+    
+    <!-- Android and other mobile browsers -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AIB 2025">
+    <meta name="application-name" content="AIB 2025 Conference">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Enhanced focus indicators */
+        a:focus, button:focus {
+            outline: 3px solid #005cbf;
+            outline-offset: 2px;
+        }
+
+        /* Ensure sufficient color contrast */
+        .back-button {
+            /* OSU red #ba0c2f on white text has excellent contrast */
+            background: #ba0c2f !important;
+        }
+
+        .back-button:hover {
+            background: #9a0a28 !important;
+        }
+
+        .day-header {
+            /* OSU red text on light background - good contrast */
+            color: #ba0c2f !important;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+            min-width: 320px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .day-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .day-header {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ba0c2f;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ba0c2f;
+        }
+
+        .schedule-table {
+            display: grid;
+            gap: 2px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 200px 1fr 250px;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            align-items: start;
+            transition: all 0.2s ease;
+        }
+
+        .schedule-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .schedule-time {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .schedule-event {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .schedule-location {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Color coding for different event types */
+        .schedule-item.keynote {
+            border-left: 5px solid #ba0c2f;
+            background: #fff8f8;
+        }
+
+        .schedule-item.presentation {
+            border-left: 5px solid #4CAF50;
+            background: #f8fff8;
+        }
+
+        .schedule-item.break {
+            border-left: 5px solid #FFC107;
+            background: #fffdf8;
+        }
+
+        .schedule-item.meal {
+            border-left: 5px solid #FF9800;
+            background: #fff9f3;
+        }
+
+        .schedule-item.social {
+            border-left: 5px solid #9C27B0;
+            background: #fdf8ff;
+        }
+
+        /* Legend */
+        .schedule-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Session expand functionality */
+        .session-expand-btn {
+            background: #ba0c2f;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .session-expand-btn:hover {
+            background: #9a0a28;
+        }
+
+        .session-details {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            grid-column: 1 / -1;
+        }
+
+        .session-details.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .parallel-session {
+            margin-bottom: 20px;
+        }
+
+        .parallel-session:last-child {
+            margin-bottom: 0;
+        }
+
+        .parallel-session h4 {
+            color: #ba0c2f;
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .parallel-session.competition h4 {
+            color: #9a0a28;
+            font-weight: 700;
+        }
+
+        .parallel-session ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .parallel-session li {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            line-height: 1.4;
+        }
+
+        .parallel-session li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #ba0c2f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #9a0a28;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .day-header {
+                font-size: 20px;
+            }
+
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .schedule-time {
+                font-size: 12px;
+                color: #ba0c2f;
+                font-weight: 700;
+            }
+
+            .schedule-event {
+                font-size: 14px;
+            }
+
+            .schedule-location {
+                font-size: 12px;
+            }
+
+            .schedule-legend {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip navigation link for screen readers -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="container">
+        <main id="main-content" role="main">
+        <a href="conference-main.html" class="back-button">← Back to Main Page</a>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="2025FCOB_AIinBusiness_Name-Tagline_550X309.jpg" 
+                 alt="2025 AI in Business Conference logo - Fisher College of Business at The Ohio State University" 
+                 style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        </div>
+        
+        <h1 style="line-height: 1.3; margin-bottom: 15px; text-align: center;">
+            2025 AI in Business Conference<br>
+            <span style="font-size: 20px; font-weight: normal; color: #666;">Fisher College of Business at The Ohio State University</span><br>
+            <span style="font-size: 24px;">Complete Schedule</span>
+        </h1>
+        <div class="subtitle" style="text-align: center;">Full conference schedule by day</div>
+
+        <div class="schedule-legend" role="region" aria-label="Schedule legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ba0c2f;"></div>
+                <span>Keynotes & Opening</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4CAF50;"></div>
+                <span>Presentation Sessions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FFC107;"></div>
+                <span>Breaks</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FF9800;"></div>
+                <span>Meals</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #9C27B0;"></div>
+                <span>Social Events</span>
+            </div>
+        </div>
+
+        <section class="day-section" aria-labelledby="day1-header">
+            <h2 class="day-header" id="day1-header">Thursday, October 2, 2025</h2>
+            <div class="schedule-table">
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Breakfast</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Registration</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:00 AM – 8:15 AM</div>
+                    <div class="schedule-event">Opening Remarks – Provost of The Ohio State University</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:15 AM – 9:00 AM</div>
+                    <div class="schedule-event">Academic Keynote - Anindya Ghose</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">9:00 AM - 9:10 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Move to Pfahl Hall</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">9:10 AM – 10:30 AM</div>
+                    <div class="schedule-event">
+                        Presentation Session 1
+                        <button class="session-expand-btn" onclick="toggleSession('session1')" aria-expanded="false" aria-controls="session1-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session1-details">
+                        <div class="parallel-session">
+                            <h4>Room 140: Human-in-the-Loop AI</h4>
+                            <ul>
+                                <li><strong>A Human-in-the-Loop AI Agent for Meta-Analysis Coding</strong><br><em>Hanyi Min* (University of Illinois Urbana-Champaign), Sohee Kim (University of Illinois Urbana-Champaign), Feng Guo (University of Tennessee at Chattanooga)</em></li>
+                                <li><strong>Amplifying Human Capacity: Institutionalizing Human-in-the-Loop AI at a Land Grant University</strong><br><em>Mark Stone* (University of Nebraska-Lincoln/ Agricultural Economics)</em></li>
+                                <li><strong>Qualitative Coding with Hybrid AI and Human-in-the-Loop</strong><br><em>Christina Dressel* (John Glenn College of Public Affairs, The Ohio State University), Megan LePere-Schloop (The Ohio State University), Lucia Gomez Teijeiro (Bern University of Applied Sciences and University of Geneva)</em></li>
+                                <li><strong>Ethics by Co-Design: Embedding Responsibility in Human-in-the-Loop AI Systems</strong><br><em>Jordan Etsio* (University of the Cumberlands)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: AI in Healthcare & Learning</h4>
+                            <ul>
+                                <li><strong>AI-Assisted Triage of Patient Messages: A Clinically Calibrated Human–AI Framework for Healthcare Operations</strong><br><em>Mohamed Megahed* (The Ohio State University), Nathan Craig (The Ohio State University), Aravind Chandrasekaran (The Ohio State University)</em></li>
+                                <li><strong>Dual Applications of Large Language Models: Specialty Triage and Patient-Friendly Discharge Summaries</strong><br><em>Xiguang Liu* (University of Florida), Haocheng Ren (University of Michigan), Tianrun Pan (Hackensack Meridian School of Medicine), Tianhe Zhang (University of Wisconsin-Madison), Liangfei Qiu (University of Florida)</em></li>
+                                <li><strong>From Copy-Paste to Cognitive Lift: A Design Theory for AI-Assisted Mastery</strong><br><em>Lori Kendall* (The Ohio State University)</em></li>
+                                <li><strong>Improving Student Engagement and Personalized Learning In Business Analytics with AI</strong><br><em>John Draper* (The Ohio State University), Ismael Talke (The Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: AI in Services & Interaction</h4>
+                            <ul>
+                                <li><strong>Does Machine Learning Help Flights Depart on Time? The Value of Machine Learning Tools on Airlines' Operational Performance</strong><br><em>Rang Gong* (The Ohio State University), Xiang (Sean) Wan (The Ohio State University)</em></li>
+                                <li><strong>Does Objective Service Quality Guarantee Subjective Service Quality? An AI Application of Facial Recognition on Flight On-Time Performance and Passenger Sentiment</strong><br><em>Xiang (Sean) Wan* (Fisher College of Business), Hongshuang (Alice) Li (Fisher College of Business), Zenan Zhou (W. P. Carey School of Business)</em></li>
+                                <li><strong>Information-Seeking from AI Chatbots: Tradeoff between Judgment and Misinformation Concerns under Stigma</strong><br><em>Aravinda Garimella* (University of Illinois Urbana-Champaign), Behnaz Bojd (University of California, Irvine), Haonan Yin (University of California, Irvine)</em></li>
+                                <li><strong>Leadership in the Loop: Business Roles in Responsible AI Innovation</strong><br><em>Shixian Xie* (Carnegie Mellon University), John Zimmerman (Carnegie Mellon University), Motahhare Eslami (Carnegie Mellon University)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">10:30 AM - 10:40 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">10:40 AM – 12:00 PM</div>
+                    <div class="schedule-event">
+                        Presentation Session 2
+                        <button class="session-expand-btn" onclick="toggleSession('session2')" aria-expanded="false" aria-controls="session2-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session2-details">
+                        <div class="parallel-session">
+                            <h4>Room 140: Logistics, Procurement & Markets</h4>
+                            <ul>
+                                <li><strong>Generative Agent-Based Modeling for Logistics and Supply Chain Management Research</strong><br><em>Vince Castillo* (The Ohio State University)</em></li>
+                                <li><strong>Human-AI Congruence in Supplier Selection from Public Procurement Bids</strong><br><em>Finnegan McKinley* (University of Arkansas), Anne Dohmen (Michigan State University), Vince Castillo (The Ohio State University)</em></li>
+                                <li><strong>The Impact of Industrial AI Agent on B2B Procurement: Evidence from a Field Experiment</strong><br><em>Ricky Tan* (China Europe International Business School), Shichen Zhang (Tianjin University), Ruyu Chen (Stanford University), Xiande Zhao (China Europe International Business School)</em></li>
+                                <li><strong>Teaching Algorithms the Art of the Deal: Lessons from Reverse Auction Blunders</strong><br><em>Piyush Shah* (Florida Gulf Coast University), Irita Mishra (University of Wisconsin-River Falls), Senali Amarasuriya (Middle Tennessee State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: Trust, Emotion & Human Experience</h4>
+                            <ul>
+                                <li><strong>Between Awe and Shame: The Emotional and Interpersonal Consequences of Workplace AI Use</strong><br><em>Justin Woodall* (University of Georgia), Yihao Liu (University of Georgia), Szu-Han (Joanna) Lin (University of Georgia), Jack Ting-Ju Chiang (Peking University), Zheng Wang (Zhejiang University)</em></li>
+                                <li><strong>Can an AI Be Sorry? Ameliorating the Human-AI Gap in Customer Service Apologies</strong><br><em>Rasam Dorri* (University of California, Riverside), Rami Zwick (University of California, Riverside), Ye Li (University of California, Riverside)</em></li>
+                                <li><strong>Emotional Agents: Human-AI Interaction and Emotional Diversity in Adversarial Prompt Engineering</strong><br><em>Guohou Shan* (Northeastern University), Kofi Arhin (Lehigh University), Yi Tong (University of Florida), Michael Rivera (Lehigh University), Liangfei Qiu (University of Florida)</em></li>
+                                <li><strong>If It's Easier, Why Do I Feel Worse? Impostor Thoughts Triggered By Generative AI Assistance</strong><br><em>Hanho Lee* (The Ohio State University), Zixu Zhang (University of Arizona), Hun Whee Lee (The Ohio State University), Sarah P. Doyle (University of Arizona), Robert B. Lount, Jr. (The Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: Hiring, Careers & Investment</h4>
+                            <ul>
+                                <li><strong>Does Machine Learning Shift Job Requirements? Impacts on Entry-Level Opportunities</strong><br><em>Yuanyang Liu* (University of Tennessee, Knoxville), Chuanren Liu (University of Tennessee), Tingliang Huang (University of Tennessee)</em></li>
+                                <li><strong>Modeling the Interviewer: Leveraging LLMs to Uncover Personality Mismatch Effects in Interview Assessment</strong><br><em>Rachit Kamdar* (University of Maryland), Balaji Padmanabhan (University of Maryland), Siva Viswanathan (University of Maryland)</em></li>
+                                <li><strong>What Do Early-Stage Investors Ask? An LLM Analysis of Expert Calls</strong><br><em>Victor Lyonnet (University of Michigan), Amin Shams* (The Ohio State University), Shaojun Zhang (The Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item meal">
+                    <div class="schedule-time">12:00 PM – 1:00 PM</div>
+                    <div class="schedule-event">Lunch & Networking</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">1:00 PM – 2:40 PM</div>
+                    <div class="schedule-event">
+                        Presentation Session 3
+                        <button class="session-expand-btn" onclick="toggleSession('session3')" aria-expanded="false" aria-controls="session3-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session3-details">
+                        <div class="parallel-session competition">
+                            <h4>Room 140: Best Presentation Competition – Doctoral Students</h4>
+                            <ul>
+                                <li><strong>The AI Management Paradox: How Algorithmic Performance Systems Drive Efficiency but Erode Consumer Trust</strong><br><em>Qiaowen Guo* (Washington University in St. Louis), Xiang Hui (Washington University in St. Louis), Fuqiang Zhang (Washington University in St. Louis), Tianjuan Feng (Fudan University)</em></li>
+                                <li><strong>Algorithm Aversion in Supplier Selection - The Role of Cognitive Style and Interface Design</strong><br><em>Abhinav Hasija* (The Ohio State University), Aravind Chandrasekaran (Ohio State University), Terry Esper (Ohio State University), Thomas Goldsby (University of Tennessee), Walter Zinn (Ohio State University)</em></li>
+                                <li><strong>Why Students Reject AI for Human Counselors in College Applications: A Field Experiment</strong><br><em>Hemanshu Das* (Yale School of Management), Sofoklis Goulas, (Yale School of Management), Faidra Monachou (Yale School of Management)</em></li>
+                                <li><strong>Breaking the Sound Barrier: Asymmetric Impacts of AI Dubbing on Multilingual Engagement on YouTube</strong><br><em>Minjie Han* (University of Rochester), Mikhail Lysyakov (University of Rochester), Yang Gao (University of Illinois Urbana-Champaign)</em></li>
+                                <li><strong>AI Self-preferencing in Algorithmic Hiring: Empirical Evidence and Insights</strong><br><em>Jiannan Xu* (University of Maryland), Gujie Li (National University of Singapore), Jane Yi Jiang (Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: AI, Work & Organizations</h4>
+                            <ul>
+                                <li><strong>AI and the Extended Workday: Productivity, Contracting Efficiency, and Distribution of Rents</strong><br><em>Junyoung Park* (Auburn University), Wei Jiang (Emory University), Rachel Xiao (Fordham University), Shen Zhang (Fordham University)</em></li>
+                                <li><strong>Large Language Models in the Workplace: The Role of Social Class Background</strong><br><em>Yao Yao* (University of Houston), Meng Li (University of Houston), Lai Wei (Boston College)</em></li>
+                                <li><strong>When Age Helps or Hinders AI Use: A Goal Orientation and Appraisal Perspective</strong><br><em>Hun Whee Lee* (The Ohio State University), Christopher Dishop (Auburn University), Nai-Wen Chi (National Sun Yat-Sen University), Yonghwan Lee (University of Seoul), Wu Wei (Wuhan University), Ke Michael Mai (China Europe International Business School)</em></li>
+                                <li><strong>Work Design for AI Agents: Tool and Socio-Technical System Design for AI Performance</strong><br><em>Cory Eisenhard* (Michigan State University), Frederick P. Morgeson (Michigan State University), Dhruv K. Toprani (Michigan State University)</em></li>
+                                <li><strong>When Told by a Machine: Human Perception and Responses to AI-Generated Information and Misinformation</strong><br><em>Lan Wu* (California State University, East Bay), Richard R. Klink (Loyola University Maryland), Jing-Wen Yang (California State University, East Bay)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: AI in Finance & Accounting</h4>
+                            <ul>
+                                <li><strong>Artificial Intelligence, Opportunity, and Regulatory Uncertainty: Implications for Asset Pricing</strong><br><em>Kris Shen* (The Ohio State University)</em></li>
+                                <li><strong>Auditing in the Age of AI: Private Equity vs. the Public Interest</strong><br><em>Rajib Doogar* (University of Washington Bothell), Sri Ramamoorti (University of Dayton), Cory A. Campbell (Indiana State University)</em></li>
+                                <li><strong>Developing a Better Mousetrap: An Advanced Machine Learning Approach for Detecting Corporate Accounting Fraud in the Presence of Noisily Labeled Training Data</strong><br><em>Waleed Muhanna* (Ohio State University)</em></li>
+                                <li><strong>The Intelligence May Be Artificial, but the Story Must Be Human: Rethinking Audit Value, Ethical Pricing, and Client Perceptions in AI-Enhanced Professional Services</strong><br><em>Kristina Harrison* (Indiana University), Sri Ramamoorti (University of Dayton), Cory Campbell (Indiana State University)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">2:40 PM - 3:00 PM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">3:00 PM - 4:40 PM</div>
+                    <div class="schedule-event">
+                        Presentation Session 4
+                        <button class="session-expand-btn" onclick="toggleSession('session4')" aria-expanded="false" aria-controls="session4-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session4-details">
+                        <div class="parallel-session competition">
+                            <h4>Room 140: Best Presentation Competition – Junior Faculty</h4>
+                            <ul>
+                                <li><strong>Improving Recycling Quality through AI & GreenNudges: Evidence from a Field Experiment</strong><br><em>Erin McKie* (The Ohio State University), Nikhil Sharma (The Ohio State University), Sanghoon Cho (Texas Christian University), Aravind Chandrasekaran (The Ohio State University)</em></li>
+                                <li><strong>Strategic Algorithmic Advice Taking</strong><br><em>Tobias Rebholz* (Duke University), Maxwell Uphoff (University of Minnesota Twin Cities), Christian H. R. Bernges (University of Tübingen), Florian Scholten (University of Tübingen)</em></li>
+                                <li><strong>When Influencers Delegate Replies: How Social AI Agents Shape User Engagement</strong><br><em>Maggie Zhang* (University of Virginia, McIntire School of Commerce), Yang Gao (University of Illinois at Urbana-Champaign), Jingjing Li (University of Virginia), Steven L. Johnson (University of Virginia)</em></li>
+                                <li><strong>The Adoption and Efficacy of Large Language Models: Evidence From Consumer Complaints in the Financial Industry</strong><br><em>Minkyu Shin* (City University of Hong Kong), Jin Kim (Northeastern University), Jiwoong Shin (Yale School of Management)</em></li>
+                                <li><strong>The Impact of AI in Operations and Supply Chain on Firm Productivity</strong><br><em>Jafar Namdar (Michigan State University), Yuanyang Liu (The University of Tennessee, Knoxville), Nima Safaei* (The Ohio State University), Sachin Modi (University of Cincinnati)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: AI in Markets, Consumers & Branding</h4>
+                            <ul>
+                                <li><strong>Accuracy Obsession: Humans Prioritize Immaterial AI Accuracy Over Their Own Compensation — Unless We Educate Them</strong><br><em>Matthew DosSantos DiSorbo* (Harvard Business School), Kris Johnson Ferreira (Harvard Business School)</em></li>
+                                <li><strong>Addressing Consumers’ Sensitive Attributes in Product Recommendations: An Explainable AI Recommendations System Approach</strong><br><em>Piyush Anand* (Rice University)</em></li>
+                                <li><strong>Backpropagating from Customer Value</strong><br><em>Midam Kim* (ServiceNow)</em></li>
+                                <li><strong>Cultural Differences in Receptivity to AI Branding</strong><br><em>Archer Yue Pan* (Wayne State University), Manoj Thomas (Cornell University)</em></li>
+                                <li><strong>Consumer Strategizing as Human-in-the-Loop: Gaming the Pricing Algorithm</strong><br><em>Joshua Gerlick* (Case Western Reserve University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: Governance & Responsible AI</h4>
+                            <ul>
+                                <li><strong>Deepfakes for Good: Empirical Analysis and AI Agentic Framework for Bias Mitigation</strong><br><em>Yizhi Liu* (University of Maryland, College Park), Balaji Padmanabhan (University of Maryland, College Park), Siva Viswanathan (University of Maryland, College Park)</em></li>
+                                <li><strong>From Slip to Spiral: Behavioral Implications of Boundary-Pushing AI-Generated Content for Platform Governance</strong><br><em>Lei Wang* (Indiana University), Lu Huang (Penn State University), Ram Gopal (University of Warwick)</em></li>
+                                <li><strong>Stress-Energy-Trust (SET): Constraints and Affordances for Ethical Artificial Intelligence Transformation in Management</strong><br><em>Huan (Harry) Wang* (Siena University), Michael D. Johnson (University of Washington)</em></li>
+                                <li><strong>Responsible AI for Strategic Decision-Making and Capacity Building in Agribusiness</strong><br><em>Asa B. Stone* (University of Nebraska-Lincoln/Agricultural Economics), Cristián Kremer F. (Universidad de Chile)</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">4:40 PM - 5:00 PM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Visit Simon's Lounge in the Blackwell Lobby</div>
+                </div>
+                <div class="schedule-item social">
+                    <div class="schedule-time">5:30 PM – 6:30 PM</div>
+                    <div class="schedule-event">Happy Hour & Networking Reception</div>
+                    <div class="schedule-location">The Ohio Stadium (Huntington Club Entrance)</div>
+                </div>
+                <div class="schedule-item social">
+                    <div class="schedule-time">6:30 PM – 8:30 PM</div>
+                    <div class="schedule-event">Conference Dinner and Stadium Group Tours</div>
+                    <div class="schedule-location">The Ohio Stadium (Huntington Club Entrance)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="day-section" aria-labelledby="day2-header">
+            <h2 class="day-header" id="day2-header">Friday, October 3, 2025</h2>
+            <div class="schedule-table">
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Breakfast</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Registration</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:00 AM – 8:50 AM</div>
+                    <div class="schedule-event">AI in Education Keynote - Mary Strain, AWS</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">8:50 AM - 9:00 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">9:00 AM – 9:50 AM</div>
+                    <div class="schedule-event">Industry Expert Panel</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">9:50 AM - 10:00 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Move to Pfahl Hall</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">10:00 AM – 11:00 AM</div>
+                    <div class="schedule-event">
+                        Presentation Session 5
+                        <button class="session-expand-btn" onclick="toggleSession('session5')" aria-expanded="false" aria-controls="session5-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session5-details">
+                        <div class="parallel-session">
+                            <h4>Room 140: AI & Scaling</h4>
+                            <ul>
+                                <li><strong>Scaling Human Capital with Artificial Intelligence: Codified Selves and Value Creation and Appropriation</strong><br><em>Natarajan Balasubramanian* (Syracuse University), Prithwiraj Choudhury (London School of Economics), Mingtao Xu (Tsinghua University)</em></li>
+                                <li><strong>Scalable Virtual Influencer Creation Using LLMs, VAEs, and Stable Diffusion Models: A Human-in-the-Loop Generative Framework</strong><br><em>Yuan Lu* (The Ohio State University), Alice Li (The Ohio State University), Greg Allenby (The Ohio State University)</em></li>
+                                <li><strong>Why the Best Machine May Not Be the Best: Incentivizing Human–Machine Collaboration</strong><br><em>Xiaotong Guan* (The University of Texas at Dallas), Anyan Qi (The University of Texas at Dallas), Shouqiang Wang (The University of Texas at Dallas)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: Law, Policy & Professional Services</h4>
+                            <ul>
+                                <li><strong>LLM-Assisted Formalization Enables Deterministic Detection of Statutory Inconsistency in the Internal Revenue Code</strong><br><em>Steven Keith Platt* (Loyola University Chicago), Borchuluun Yadamsuren (Loyola University Chicago), Miguel Diaz (Loyola University Chicago)</em></li>
+                                <li><strong>Reuniting Forcibly Separated Families Through Shared Memories</strong><br><em>Huifeng Su* (Yale University), Lesley Meng (Yale School of Management), Edieal J. Pinker (Yale School of Management)</em></li>
+                                <li><strong>The Impact of Responsible AI Management (RAIM) on Organizational and Market Performance</strong><br><em>Christopher Yaluma* (The Ohio State University), Aravind Chandrasekaran (The Ohio State University), Dennis Hirsch (The Ohio State University), Rakesh Mallipeddi (The Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: Roundtable</h4>
+                            <ul>
+                                <li><strong>Generative AI as an Equalizer: Enabling Entrepreneurs in Underrepresented Regions</strong><br><em>Faisal Altalhi* (Kent State University) - Roundtable Discussion</em></li>
+                                <li><strong>Rethinking Professional Ethics in Accounting for the Age of Agentic AI</strong><br><em>Sridhar Ramamoorti* (University of Dayton), George Botic, Mark DeLong, William Miller, Micael Voinovich - Roundtable Discussion</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">11:00 AM – 11:10 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">11:10 AM - 12:10 PM</div>
+                    <div class="schedule-event">
+                        Presentation Session 6
+                        <button class="session-expand-btn" onclick="toggleSession('session6')" aria-expanded="false" aria-controls="session6-details">
+                            View Sessions
+                        </button>
+                    </div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                    <div class="session-details" id="session6-details">
+                        <div class="parallel-session">
+                            <h4>Room 140: AI & Responses</h4>
+                            <ul>
+                                <li><strong>Collaborative Intelligence: Reconstructing the Invisible Consumer from Fragmented Survey Data</strong><br><em>Alice Li* (The Ohio State University), Jiyeon Hong (Seoul National University), Qing Liu (Northeastern University)</em></li>
+                                <li><strong>AI in the Pen: How Real-Time AI Writing Guidance Shapes Online Reviews</strong><br><em>Zaiyan Wei* (Purdue University), Fangyan Wang (Purdue University), Sai Liang (Purdue University)</em></li>
+                                <li><strong>It's Not Just What You Say, But When You Say It</strong><br><em>Max Tu* (The Ohio State University), Alice Li (The Ohio State University), Greg Allenby (The Ohio State University)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 202: Human-AI Futures</h4>
+                            <ul>
+                                <li><strong>Designing Human-Automation Redundancy: Overreliance, Automation Shirking, and the Operator's Dilemma</strong><br><em>Doron Cohen* (Carnegie Mellon University), Yefim Roth (University of Basel), Joerg Rieskamp (University of Basel), Markus Schöbel (Carnegie Mellon University)</em></li>
+                                <li><strong>When Peers and Chatbots Disagree: How Conflicting Advice Shapes Auditor Voice</strong><br><em>Dongsheng Li* (University of Wisconsin–Madison), Emily Griffith (University of Wisconsin–Madison), Dan Zhou (University of Wisconsin–Madison)</em></li>
+                                <li><strong>The AI Echo Chamber: AI-Generated Summaries in Prediction Markets</strong><br><em>Yi Tong* (University of Florida), Kaiyu Zhang (University of Florida), Qili Wang (Penn State University), Liangfei Qiu (University of Florida)</em></li>
+                            </ul>
+                        </div>
+                        <div class="parallel-session">
+                            <h4>Room 240: (No Session)</h4>
+                            <ul>
+                                <li><em>Only two parallel sessions in this time slot</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="schedule-item meal">
+                    <div class="schedule-time">12:10 PM – 1:00 PM</div>
+                    <div class="schedule-event">Lunch & Concluding Remarks</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+            </div>
+        </section>
+        
+        </main>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="mailto:castillo.230@osu.edu?subject=Fisher AIB Conference 2025 - Schedule Feedback" 
+               style="display: inline-block; background: #f5f5f5; color: #666; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 12px; border: 1px solid #ddd; transition: all 0.2s ease;"
+               onmouseover="this.style.background='#e9e9e9'; this.style.color='#333'"
+               onmouseout="this.style.background='#f5f5f5'; this.style.color='#666'">
+                Feedback? Email us
+            </a>
+        </div>
+        
+        <footer style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999; font-style: italic;">
+            Vibe coded into existence with a human-in-the-loop
+        </footer>
+    </div>
+
+    <script>
+        function toggleSession(sessionId) {
+            const sessionDetails = document.getElementById(sessionId + '-details');
+            const buttons = document.querySelectorAll('[aria-controls="' + sessionId + '-details"]');
+            
+            if (sessionDetails && buttons.length > 0) {
+                const button = buttons[0];
+                const isExpanded = sessionDetails.classList.contains('show');
+                
+                if (isExpanded) {
+                    sessionDetails.classList.remove('show');
+                    button.textContent = 'View Sessions';
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    sessionDetails.classList.add('show');
+                    button.textContent = 'Hide Sessions';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
