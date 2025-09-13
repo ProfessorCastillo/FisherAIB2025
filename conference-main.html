@@ -169,12 +169,61 @@
         </main>
         
         <div style="text-align: center; margin-top: 20px;">
-            <a href="mailto:castillo.230@osu.edu?subject=Fisher AIB Conference 2025 - Website Feedback" 
-               style="display: inline-block; background: #f5f5f5; color: #666; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 12px; border: 1px solid #ddd; transition: all 0.2s ease;"
-               onmouseover="this.style.background='#e9e9e9'; this.style.color='#333'"
-               onmouseout="this.style.background='#f5f5f5'; this.style.color='#666'">
-                Feedback? Email us
-            </a>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
+                <a href="mailto:castillo.230@osu.edu?subject=Fisher AIB Conference 2025 - Website Feedback" 
+                   style="display: inline-block; background: #f5f5f5; color: #666; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-size: 12px; border: 1px solid #ddd; transition: all 0.2s ease;"
+                   onmouseover="this.style.background='#e9e9e9'; this.style.color='#333'"
+                   onmouseout="this.style.background='#f5f5f5'; this.style.color='#666'">
+                    Feedback? Email us
+                </a>
+                <button onclick="toggleAppInstructions()" 
+                        style="background: #f5f5f5; color: #666; padding: 8px 16px; border: 1px solid #ddd; border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s ease;"
+                        onmouseover="this.style.background='#e9e9e9'; this.style.color='#333'"
+                        onmouseout="this.style.background='#f5f5f5'; this.style.color='#666'"
+                        aria-expanded="false"
+                        aria-controls="app-instructions">
+                    Save Portal as Mobile App
+                </button>
+            </div>
+            
+            <div id="app-instructions" style="display: none; margin-top: 15px; text-align: center;">
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;">
+                    <button onclick="showInstructions('ios')" 
+                            style="background: #007AFF; color: white; padding: 8px 16px; border: none; border-radius: 15px; font-size: 11px; cursor: pointer; transition: all 0.2s ease;"
+                            onmouseover="this.style.background='#0056CC'"
+                            onmouseout="this.style.background='#007AFF'">
+                        iOS Instructions
+                    </button>
+                    <button onclick="showInstructions('android')" 
+                            style="background: #34A853; color: white; padding: 8px 16px; border: none; border-radius: 15px; font-size: 11px; cursor: pointer; transition: all 0.2s ease;"
+                            onmouseover="this.style.background='#2E8B40'"
+                            onmouseout="this.style.background='#34A853'">
+                        Android Instructions
+                    </button>
+                </div>
+                
+                <div id="ios-instructions" style="display: none; background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 10px 0; font-size: 12px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; border: 1px solid #e9ecef;">
+                    <h4 style="margin: 0 0 10px 0; color: #007AFF; font-size: 13px;">iOS Installation (Safari):</h4>
+                    <ol style="margin: 0; padding-left: 20px; line-height: 1.5;">
+                        <li>Open this website in Safari browser</li>
+                        <li>Tap the Share button (□↗) at the bottom</li>
+                        <li>Scroll down and tap "Add to Home Screen"</li>
+                        <li>Tap "Add" to confirm</li>
+                    </ol>
+                    <p style="margin: 10px 0 0 0; font-style: italic; color: #666;">The app will appear on your home screen with the conference logo!</p>
+                </div>
+                
+                <div id="android-instructions" style="display: none; background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 10px 0; font-size: 12px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; border: 1px solid #e9ecef;">
+                    <h4 style="margin: 0 0 10px 0; color: #34A853; font-size: 13px;">Android Installation (Chrome/Edge):</h4>
+                    <ol style="margin: 0; padding-left: 20px; line-height: 1.5;">
+                        <li>Open this website in Chrome or Edge browser</li>
+                        <li>Look for the "Add to Home Screen" prompt, or</li>
+                        <li>Tap the browser menu (⋮) → "Add to Home Screen" or "Install App"</li>
+                        <li>Tap "Add" or "Install" to confirm</li>
+                    </ol>
+                    <p style="margin: 10px 0 0 0; font-style: italic; color: #666;">The app will work offline and launch like a native app!</p>
+                </div>
+            </div>
         </div>
         
         <footer style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999; font-style: italic;">
@@ -192,6 +241,41 @@
                     console.log('ServiceWorker registration failed');
                 });
             });
+        }
+
+        // Toggle app installation instructions
+        function toggleAppInstructions() {
+            const instructions = document.getElementById('app-instructions');
+            const button = document.querySelector('[aria-controls="app-instructions"]');
+            const isVisible = instructions.style.display !== 'none';
+            
+            if (isVisible) {
+                instructions.style.display = 'none';
+                button.setAttribute('aria-expanded', 'false');
+                // Hide individual instruction panels
+                document.getElementById('ios-instructions').style.display = 'none';
+                document.getElementById('android-instructions').style.display = 'none';
+            } else {
+                instructions.style.display = 'block';
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Show specific platform instructions
+        function showInstructions(platform) {
+            const iosInstructions = document.getElementById('ios-instructions');
+            const androidInstructions = document.getElementById('android-instructions');
+            
+            // Hide both first
+            iosInstructions.style.display = 'none';
+            androidInstructions.style.display = 'none';
+            
+            // Show the selected platform
+            if (platform === 'ios') {
+                iosInstructions.style.display = 'block';
+            } else if (platform === 'android') {
+                androidInstructions.style.display = 'block';
+            }
         }
     </script>
 
