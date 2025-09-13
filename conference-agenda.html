@@ -15,6 +15,9 @@
     <!-- Android home screen icon -->
     <link rel="icon" type="image/png" sizes="192x192" href="2025FCOB_AIinBusiness.png">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Android and other mobile browsers -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -746,6 +749,17 @@
                     button.setAttribute('aria-expanded', 'true');
                 }
             }
+        }
+
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }, function(err) {
+                    console.log('ServiceWorker registration failed');
+                });
+            });
         }
     </script>
 </body>
