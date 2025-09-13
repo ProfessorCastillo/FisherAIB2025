@@ -113,6 +113,98 @@
             border-bottom: 2px solid #ba0c2f;
         }
 
+        .schedule-table {
+            display: grid;
+            gap: 2px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 200px 1fr 250px;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            align-items: start;
+            transition: all 0.2s ease;
+        }
+
+        .schedule-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .schedule-time {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .schedule-event {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .schedule-location {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Color coding for different event types */
+        .schedule-item.keynote {
+            border-left: 5px solid #ba0c2f;
+            background: #fff8f8;
+        }
+
+        .schedule-item.presentation {
+            border-left: 5px solid #4CAF50;
+            background: #f8fff8;
+        }
+
+        .schedule-item.break {
+            border-left: 5px solid #FFC107;
+            background: #fffdf8;
+        }
+
+        .schedule-item.meal {
+            border-left: 5px solid #FF9800;
+            background: #fff9f3;
+        }
+
+        .schedule-item.social {
+            border-left: 5px solid #9C27B0;
+            background: #fdf8ff;
+        }
+
+        /* Legend */
+        .schedule-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
         .back-button {
             display: inline-block;
             background: #ba0c2f;
@@ -143,6 +235,31 @@
             .day-header {
                 font-size: 20px;
             }
+
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .schedule-time {
+                font-size: 12px;
+                color: #ba0c2f;
+                font-weight: 700;
+            }
+
+            .schedule-event {
+                font-size: 14px;
+            }
+
+            .schedule-location {
+                font-size: 12px;
+            }
+
+            .schedule-legend {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -166,14 +283,164 @@
         </h1>
         <div class="subtitle" style="text-align: center;">Full conference schedule by day</div>
 
+        <div class="schedule-legend" role="region" aria-label="Schedule legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ba0c2f;"></div>
+                <span>Keynotes & Opening</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4CAF50;"></div>
+                <span>Presentation Sessions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FFC107;"></div>
+                <span>Breaks</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #FF9800;"></div>
+                <span>Meals</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #9C27B0;"></div>
+                <span>Social Events</span>
+            </div>
+        </div>
+
         <section class="day-section" aria-labelledby="day1-header">
-            <h2 class="day-header" id="day1-header">October 2, 2025</h2>
-            <!-- Schedule content will be added here -->
+            <h2 class="day-header" id="day1-header">Thursday, October 2, 2025</h2>
+            <div class="schedule-table">
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Breakfast</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Registration</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:00 AM – 8:15 AM</div>
+                    <div class="schedule-event">Opening Remarks – Provost of The Ohio State University</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:15 AM – 9:00 AM</div>
+                    <div class="schedule-event">Academic Keynote - Anindya Ghose</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">9:00 AM - 9:10 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Move to Pfahl Hall</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">9:10 AM – 10:30 AM</div>
+                    <div class="schedule-event">Presentation Session 1</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">10:30 AM - 10:40 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">10:40 AM – 12:00 PM</div>
+                    <div class="schedule-event">Presentation Session 2</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item meal">
+                    <div class="schedule-time">12:00 PM – 1:00 PM</div>
+                    <div class="schedule-event">Lunch & Networking</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">1:00 PM – 2:40 PM</div>
+                    <div class="schedule-event">Presentation Session 3</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">2:40 PM - 3:00 PM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">3:00 PM - 4:40 PM</div>
+                    <div class="schedule-event">Presentation Session 4</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">4:40 PM - 5:00 PM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item social">
+                    <div class="schedule-time">5:30 PM – 6:30 PM</div>
+                    <div class="schedule-event">Happy Hour & Networking Reception</div>
+                    <div class="schedule-location">The Ohio Stadium (Huntington Club Entrance)</div>
+                </div>
+                <div class="schedule-item social">
+                    <div class="schedule-time">6:30 PM – 8:30 PM</div>
+                    <div class="schedule-event">Conference Dinner and Stadium Group Tours</div>
+                    <div class="schedule-location">The Ohio Stadium (Huntington Club Entrance)</div>
+                </div>
+            </div>
         </section>
 
         <section class="day-section" aria-labelledby="day2-header">
-            <h2 class="day-header" id="day2-header">October 3, 2025</h2>
-            <!-- Schedule content will be added here -->
+            <h2 class="day-header" id="day2-header">Friday, October 3, 2025</h2>
+            <div class="schedule-table">
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Breakfast</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">7:00 AM – 8:00 AM</div>
+                    <div class="schedule-event">Registration</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">8:00 AM – 8:50 AM</div>
+                    <div class="schedule-event">AI in Education Keynote - Mary Strain, AWS</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">8:50 AM - 9:00 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Blackwell Inn Foyer</div>
+                </div>
+                <div class="schedule-item keynote">
+                    <div class="schedule-time">9:00 AM – 9:50 AM</div>
+                    <div class="schedule-event">Industry Expert Panel</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">9:50 AM - 10:00 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Move to Pfahl Hall</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">10:00 AM – 11:00 AM</div>
+                    <div class="schedule-event">Presentation Session 5</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item break">
+                    <div class="schedule-time">11:00 AM – 11:10 AM</div>
+                    <div class="schedule-event">Break</div>
+                    <div class="schedule-location">Pfahl Hall Foyer</div>
+                </div>
+                <div class="schedule-item presentation">
+                    <div class="schedule-time">11:10 AM - 12:10 PM</div>
+                    <div class="schedule-event">Presentation Session 6</div>
+                    <div class="schedule-location">Pfahl Hall Rooms 140, 202, and 240</div>
+                </div>
+                <div class="schedule-item meal">
+                    <div class="schedule-time">12:10 PM – 1:00 PM</div>
+                    <div class="schedule-event">Lunch & Concluding Remarks</div>
+                    <div class="schedule-location">Blackwell Inn Ballroom</div>
+                </div>
+            </div>
         </section>
         
         </main>
