@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisher AIB Conference 2025 - Schedule</title>
+    <title>Fisher AIB Conference 2025 - Complete Schedule October 2-3</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="2025FCOB_AIinBusiness_ico.ico">
@@ -26,6 +26,45 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Enhanced focus indicators */
+        a:focus, button:focus {
+            outline: 3px solid #005cbf;
+            outline-offset: 2px;
+        }
+
+        /* Ensure sufficient color contrast */
+        .back-button {
+            /* OSU red #ba0c2f on white text has excellent contrast */
+            background: #ba0c2f !important;
+        }
+
+        .back-button:hover {
+            background: #9a0a28 !important;
+        }
+
+        .day-header {
+            /* OSU red text on light background - good contrast */
+            color: #ba0c2f !important;
         }
 
         body {
@@ -108,12 +147,15 @@
     </style>
 </head>
 <body>
+    <!-- Skip navigation link for screen readers -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="container">
+        <main id="main-content" role="main">
         <a href="conference-search.html" class="back-button">← Back to Main Page</a>
         
         <div style="text-align: center; margin-bottom: 30px;">
             <img src="2025FCOB_AIinBusiness_Name-Tagline_550X309.jpg" 
-                 alt="AIB 2025 Conference" 
+                 alt="2025 AI in Business Conference logo - Fisher College of Business at The Ohio State University" 
                  style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
         </div>
         
@@ -124,19 +166,21 @@
         </h1>
         <div class="subtitle" style="text-align: center;">Full conference schedule by day</div>
 
-        <div class="day-section">
-            <div class="day-header">October 2, 2025</div>
+        <section class="day-section" aria-labelledby="day1-header">
+            <h2 class="day-header" id="day1-header">October 2, 2025</h2>
             <!-- Schedule content will be added here -->
-        </div>
+        </section>
 
-        <div class="day-section">
-            <div class="day-header">October 3, 2025</div>
+        <section class="day-section" aria-labelledby="day2-header">
+            <h2 class="day-header" id="day2-header">October 3, 2025</h2>
             <!-- Schedule content will be added here -->
-        </div>
+        </section>
         
-        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999; font-style: italic;">
+        </main>
+        
+        <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 12px; color: #999; font-style: italic;">
             Vibe coded into existence with a human-in-the-loop 😎
-        </div>
+        </footer>
     </div>
 </body>
 </html>

@@ -29,3 +29,6 @@ knowledge_graph/
 # Exclude housekeeping/utility scripts
 check_schedule_match.py
 merge_schedule_data.py
+
+# Exclude mdas txt file
+MDAS criteria.txt
