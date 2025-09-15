@@ -1,8 +1,9 @@
-const CACHE_NAME = 'fisher-aib-2025-v1';
+const CACHE_NAME = 'fisher-aib-2025-v2';
 const urlsToCache = [
   '/conference-main.html',
   '/conference-agenda.html',
   '/conference-presentation-search.html',
+  '/AIB_presentation_list_cleaned_abstracts.json',
   '/agenda.json',
   '/2025FCOB_AIinBusiness_Name-Tagline_550X309.jpg',
   '/2025FCOB_AIinBusiness.png',

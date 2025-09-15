@@ -1,5 +1,28 @@
 [
   {
+    "title": "A Framework for Interventions in Human–AI Collaboration",
+    "authors": [
+      {
+        "name": "On Amir",
+        "affiliation": "UC San Diego"
+      }
+    ],
+    "presenter_first_name": "Paul",
+    "presenter_last_name": "Wynns",
+    "presenter_email": "pwynns@ucsd.edu",
+    "presenter_affiliation": "UC San Diego",
+    "presentation_room": "Pfahl 240",
+    "time": "10:40 - 12:00",
+    "reported_discipline": "Behavioral Marketing",
+    "cleaned_discipline": "Marketing",
+    "best_phd_finalist": null,
+    "best_junior_faculty_finalist": null,
+    "pdf_id": "R_7pRHDIVneTo0sK8",
+    "abstract": "As artificial intelligence (AI) becomes embedded in high-stakes domains, public trust has emerged as a critical design challenge. Trust in AI is not just a matter of measurable performance, precision, and safety statistics. For laypeople, policymakers, and designers, perception is reality. In fields such as aviation, healthcare, and autonomous vehicles, users often assess safety based on whether human oversight appears present and engaged. Even in systems with strong safety records, discomfort can arise when human involvement is invisible or ambiguous. This paper presents a framework for trust-enhancing interventions in human–AI collaboration, grounded in theories of situational trust and social cognition. Drawing on layered trust models (Hoff & Bashir, 2015), appropriate reliance frameworks (Lee & See, 2004), and “risk-as-feelings” hypothesis (Loewenstein et al., 2001), we focus on a key perceptual driver of public trust, which is the salience and visibility of human collaboration. These models emphasize that users often evaluate AI not purely on functional criteria, but through intuitive social cues such as attentiveness, agency, and perceived control. Across four studies (N ≈ 4,500) conducted in the domain of commercial aviation, we replicate and explain the phenomenon of autopilot aversion: a measurable decline in perceived safety when automation replaces visible human control. In Study 1, we identify flight conditions such as degraded visibility that amplify discomfort with automated systems. Study 2 demonstrates that describing an otherwise identical flight as using autopilot, rather than manual control, significantly reduces perceived safety. Study 3 shows that this trust penalty is mediated by reduced perceptions of pilot attentiveness, a key signal of human engagement. Study 4 provides a proof of concep by reframing the autopilot as a collaborative partner, rather than a monitored tool, restores trust to the level observed under manual control. These findings suggest that trust in AI hinges not only on what systems do, but on how human-AI interactions are framed and understood. We propose a set of design principles grounded in social perception: make human oversight visible, frame automation as a collaborative partner, and reinforce shared attention and responsibility. Our recommendations, supported by empirical evidence, are grounded in the recognition that even so-called autonomous technologies operate within broader sociotechnical systems. In such systems, collaboration is inherent. Trust is built on how transparently and meaningfully that collaboration can be perceived. While these interventions are modest in cost and scope, they offer a way to close the perception gap in human–AI teaming. Future work should test these strategies in interactive, multimodal environments and across cultural contexts. As AI systems grow more capable, maintaining trust may depend as much on how we communicate human–AI relationships as on how we build them.",
+    "session_title": "Hiring, Careers & Investment",
+    "date": "Oct 2"
+  },
+  {
     "title": "A Human-in-the-Loop AI Agent for Meta-Analysis Coding",
     "authors": [
       {

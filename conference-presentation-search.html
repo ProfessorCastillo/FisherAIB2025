@@ -610,7 +610,7 @@
         async function init() {
             try {
                 // Load the JSON data
-                const response = await fetch('AIB_presentation_list_cleaned_abstracts.json');
+                const response = await fetch('AIB_presentation_list_cleaned_abstracts.jsonv=${Date.now()}');
                 if (!response.ok) {
                     throw new Error('Failed to load presentation data');
                 }
