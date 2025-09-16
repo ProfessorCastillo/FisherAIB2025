@@ -23,8 +23,9 @@ invites.csv
 *backup*
 conference-search backup.html
 
-# Exclude knowledge graph
+# Exclude knowledge graph & research landscape
 knowledge_graph/
+research_landscape/
 
 # Exclude housekeeping/utility scripts
 check_schedule_match.py
