@@ -170,6 +170,37 @@
     "date": "Oct 3"
   },
   {
+    "title": "AI-Powered Virtual Stress-Testing: A Data-Driven Framework for Strategic Resilience Investment in Power Grids",
+    "authors": [
+      {
+        "name": "Mazin Al-Mahrouqi",
+        "affiliation": "The Ohio State University"
+      },
+      {
+        "name": "Abdollah Shafieezadeh",
+        "affiliation": "The Ohio State University"
+      },
+      {
+        "name": "Jieun Hur",
+        "affiliation": "The Ohio State University"
+      }
+    ],
+    "presenter_first_name": "Mazin",
+    "presenter_last_name": "Al-Mahrouqi",
+    "presenter_email": "mahrouqi.1@osu.edu",
+    "presenter_affiliation": "The Ohio State University",
+    "presentation_room": "Pfahl 240",
+    "time": "3:00 - 4:40",
+    "reported_discipline": "Civil Engineering",
+    "cleaned_discipline": "Logistics, Operations, and Supply Chain Management",
+    "best_phd_finalist": null,
+    "best_junior_faculty_finalist": null,
+    "pdf_id": "R_7aOKcz7cWssGmEp",
+    "abstract": "The urgent need for new transmission infrastructure, driven by the expansion of data centers and the AI boom, intensifies a long-standing challenge for utility providers: accurately assessing the fragility of transmission lines against extreme weather events. Current physics-based simulations, while foundational, are often conservative, computationally intensive, and struggle to capture the complex interplay of real-world variables like elevation, environmental conditions, and multifaceted weather patterns. This analytical gap leads to suboptimal capital allocation for grid hardening, leaving customers and economies vulnerable to extended, high-cost power outages. Fortunately, decades of grid operation have produced a vast repository of historical interruption records. This real-world data inherently captures the complex, system-wide effects that simulations often oversimplify. We propose to utilize this rich dataset with a novel, data-driven AI model that functions as an event-based 'virtual stress-test.' Developed in collaboration with the Korea Atomic Energy Research Institute (KAERI), our approach is distinguished by its foundation in real-world data. It is trained on an extensive dataset of actual, historical power grid interruptions from the Bonneville Power Administration, spanning 22 years and covering a wide range of weather patterns and terrains. This grounding in empirical evidence ensures its relevance to operational challenges, setting it apart from models based on simulated or testbed systems. The model takes a given weather event as input to predict and rank which specific lines are most likely to fail. This framework also enables 'virtual hardening testing,' allowing planners to simulate how strategic upgrades—such as adjusting a line's voltage—would alter its failure probability under the same stress event, thereby identifying the most effective resilience strategies. To translate these technical fragility assessments into actionable business intelligence, we propose a methodology for integrating the model's outputs into a Cost-Benefit Analysis (CBA) framework. By coupling the model's predicted failure probabilities with established economic metrics, such as the Value of Lost Load (VoLL), this approach is designed to quantify the financial benefit of a proposed investment in terms of avoided societal and operational costs. This provides a transparent, data-driven basis for justifying capital expenditures to regulators and stakeholders, ensuring that investments are directed toward the most impactful resilience improvements. This research directly aligns with the conference theme of AI tools for strategic decision-making. Our framework empowers utility planners to move beyond generalized risk assessments toward a proactive, financially optimized approach to resilience. It serves as a Human-in-the-Loop system where the AI provides a quantitative risk profile, augmenting the strategic capabilities of human decision-makers to test hypotheses, prioritize investments, and build a more reliable and resilient energy future.",
+    "session_title": "AI & Responses",
+    "date": "Oct 2"
+  },
+  {
     "title": "AI Self-preferencing in Algorithmic Hiring: Empirical Evidence and Insights",
     "authors": [
       {
