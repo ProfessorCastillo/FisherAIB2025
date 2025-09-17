@@ -527,6 +527,29 @@
     "date": "Oct 2"
   },
   {
+    "title": "Can Generative AI Acquire Tacit Knowledge? Revisiting Strategic Assumptions in the Age of Large Language Models (Roundtable Discussion)",
+    "authors": [
+      {
+        "name": "Ezekiel Leo",
+        "affiliation": "Grand Valley State University"
+      }
+    ],
+    "presenter_first_name": "Ezekiel",
+    "presenter_last_name": "Leo",
+    "presenter_email": "leoez@gvsu.edu",
+    "presenter_affiliation": "Grand Valley State University",
+    "presentation_room": "Pfahl 240",
+    "time": "10:00 - 11:00",
+    "reported_discipline": "Strategic Management",
+    "cleaned_discipline": "Management and Human Resources",
+    "best_phd_finalist": null,
+    "best_junior_faculty_finalist": null,
+    "pdf_id": "R_92LQYKuFUxDvvT1",
+    "abstract": "Overview: Tacit knowledge—“we know more than we can tell” (Polanyi, 1966)—critical source of sustained competitive advantage in strategic management, viewed as inimitable, deeply embedded, and resistant to codification from the RBV (Barney, 1991) to dynamic capabilities (Teece et al., 1997) and organizational learning (Nonaka, 1994; Kogut & Zander, 1992); yet LLMs and generative AI challenge these assumptions by potentially eliciting or replicating tacit knowledge through pattern learning from vast corpora, raising the puzzle: can GenAI capture or reconstruct tacit knowledge, and what does that mean for competitive advantage, firm capabilities, and human expertise? Discussion Focus and Objectives: Invite scholars across business disciplines to critically examine whether GenAI can capture tacit knowledge and its theoretical and practical implications; Topics for discussion may include: 1) What does it mean for GenAI to “know” something tacit—can tacit knowledge be inferred from data even if never articulated? 2) Are there distinctions among individual, collective, and organizational tacit knowledge regarding LLM capture or simulation? 3) If LLMs replicate tacit routines (Kogut & Zander, 1992), does that reduce causal ambiguity and imitation barriers—or create new ones? 4) What are GenAI’s limits in modeling or transferring tacit knowledge, and does the SECI model (Nonaka, 1994) still hold in the GenAI era? 5) How should organizations capture or safeguard their own tacit knowledge given the rise of LLMs? 6) What ethical and epistemological implications arise when machines appear to possess knowledge they were never explicitly taught? Plan for Facilitating Discussion: The roundtable will begin with a brief framing of the core issue, referencing classic strategy literature and emerging GenAI scholarship (e.g., What Do Large Language Models Know? [arXiv:2504.12187] and Large Language Models and the Elicitation of Tacit Knowledge [TU Delft]); participants will then respond to guided questions, surfacing tensions, disciplinary perspectives, and research directions, concluding with a summary of key insights and open questions for future inquiry. Intended Contribution: Bridge classic strategic theory with current AI debates, advancing our understanding of knowledge, imitation, capability‑building, and the future of work, especially as organizations adopt GenAI tools in knowledge‑intensive domains.",
+    "session_title": "Roundtable",
+    "date": "Oct 3"
+  },
+  {
     "title": "Collaborative Intelligence: Reconstructing the Invisible Consumer from Fragmented Survey Data",
     "authors": [
       {
@@ -978,7 +1001,7 @@
     "presentation_room": "Pfahl 240",
     "time": "10:00 - 11:00",
     "reported_discipline": "Strategic management",
-    "cleaned_discipline": "Roundtable",
+    "cleaned_discipline": "Management and Human Resources",
     "best_phd_finalist": null,
     "best_junior_faculty_finalist": null,
     "pdf_id": "R_5H7wPQJDpTJSHx5",
@@ -1393,7 +1416,7 @@
     "presentation_room": "Pfahl 240",
     "time": "10:00 - 11:00",
     "reported_discipline": "Accounting & MIS",
-    "cleaned_discipline": "Roundtable",
+    "cleaned_discipline": "Accounting",
     "best_phd_finalist": null,
     "best_junior_faculty_finalist": null,
     "pdf_id": "R_6CU0RvXYRKzq8xR",
