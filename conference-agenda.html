@@ -820,18 +820,34 @@
         function toggleSession(sessionId) {
             const sessionDetails = document.getElementById(sessionId + '-details');
             const buttons = document.querySelectorAll('[aria-controls="' + sessionId + '-details"]');
-            
+
             if (sessionDetails && buttons.length > 0) {
                 const button = buttons[0];
                 const isExpanded = sessionDetails.classList.contains('show');
-                
+
+                // Determine button text based on the type of content
+                const isSpeakerBio = button.textContent.includes('Bio');
+                const isPanelist = button.textContent.includes('Panelist');
+
                 if (isExpanded) {
                     sessionDetails.classList.remove('show');
-                    button.textContent = 'View Sessions';
+                    if (isSpeakerBio) {
+                        button.textContent = 'View Speaker Bio';
+                    } else if (isPanelist) {
+                        button.textContent = 'View Panelists';
+                    } else {
+                        button.textContent = 'View Sessions';
+                    }
                     button.setAttribute('aria-expanded', 'false');
                 } else {
                     sessionDetails.classList.add('show');
-                    button.textContent = 'Hide Sessions';
+                    if (isSpeakerBio) {
+                        button.textContent = 'Hide Speaker Bio';
+                    } else if (isPanelist) {
+                        button.textContent = 'Hide Panelists';
+                    } else {
+                        button.textContent = 'Hide Sessions';
+                    }
                     button.setAttribute('aria-expanded', 'true');
                 }
             }
