@@ -302,29 +302,6 @@
     "date": "Oct 2"
   },
   {
-    "title": "Amplifying Human Capacity: Institutionalizing Human-in-the-Loop AI at a Land Grant University",
-    "authors": [
-      {
-        "name": "Mark Stone",
-        "affiliation": "University of Nebraska-Lincoln/Agricultural Economics"
-      }
-    ],
-    "presenter_first_name": "Mark",
-    "presenter_last_name": "Stone",
-    "presenter_email": "mark.stone@unl.edu",
-    "presenter_affiliation": "University of Nebraska-Lincoln/Agricultural Economics",
-    "presentation_room": "Pfahl 140",
-    "time": "9:10 - 10:30",
-    "reported_discipline": "Biological Systems Engineering",
-    "cleaned_discipline": "Pedagogy",
-    "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null,
-    "pdf_id": "R_7psrBTjXm3u7Lmt",
-    "abstract": "As artificial intelligence (AI) becomes pervasive in organizational decision-making, the need to harness its potential while safeguarding human agency, ethical responsibility, and sustainable innovation grows increasingly urgent. This presentation details the University of Nebraska\u2013Lincoln\u2019s (UNL) Pioneering Regenerative AI for Innovation, Research, and Inclusive Education (PRAIRIE) initiative is a comprehensive, human-centered approach that positions AI not as a mere automation tool but as a partner for capacity-building and community empowerment. By aligning operational, educational, and research practices with Nebraska\u2019s land-grant mission, PRAIRIE exemplifies how institutions can responsibly implement human-in-the-loop AI across diverse business and organizational contexts. UNL PRAIRIE\u2019s framework is built upon four core pillars: empowering AI-ready learners, strengthening institutional and industry partnerships, catalyzing discovery through targeted research, and building sustainable, AI-enhanced systems. Distinctive in its focus on \u201cRegenerative AI,\u201d the initiative emphasizes systems that augment human capability and foster cycles of sustainable innovation, rooting AI deployment in stewardship, inclusion, and pragmatic co-creation. \u25cf Empowering AI-Ready Learners: By 2027, every UNL engineering graduate will be fluent in both their technical discipline and AI applications relevant to their field. PRAIRIE integrates AI modules throughout curricula, offers new certificate programs (\u201cAI x Engineering\u201d and \u201cAI x All\u201d), and provides institution-wide AI literacy development for staff and faculty. AI tools are deployed to personalize learning and broaden access, ensuring every learner, regardless of background, is positioned for success in AI-enabled workplaces. \u25cf Strengthening Partnerships: PRAIRIE serves as a bridge between innovation and local needs, particularly across Nebraska\u2019s manufacturing, infrastructure, agricultural, and rural sectors. The initiative partners with industry to offer microcredential programs for professionals, hosts K-12 teacher and student academies, and accelerates the diffusion of responsible AI practices outside the university. \u25cf Driving Discovery: An AI Applications Core and strategic seed funding support interdisciplinary research in infrastructure, rural innovation, and biotechnology. By recruiting new faculty and building external partnerships, PRAIRIE aims to secure major federal funding while positioning Nebraska as a heartland leader in responsible AI application and research. \u25cf Building Sustainable Systems: AI-enhanced platforms improve student retention, operational efficiency, and policy governance. Crucially, governance structures protect against misuse, support ethical decision-making, and institutionalize mechanisms for continuous stakeholder feedback. Drawing on empirical findings from PRAIRIE\u2019s initial deployment, we share evidence-based strategies for overcoming psychological and organizational barriers to adoption, fostering communities of practice, and differentiating roles in early AI experimentation. Our research shows that human-centered onboarding, transparent governance, and participatory program design are key to reducing anxiety and amplifying motive power for innovation. This session provides both conceptual models and practical tools such as AI-readiness assessments, modular training workshops, and adaptable policy templates, which are relevant to business, government, and educational leaders. By centering human capacity, PRAIRIE offers a replicable roadmap for organizations seeking to embed human-in-the-loop AI: not merely for technical efficiency, but to enhance collaboration, inclusion, and resilience in an AI-transformed world.",
-    "session_title": "Human-in-the-Loop AI",
-    "date": "Oct 2"
-  },
-  {
     "title": "Artificial Intelligence, Opportunity, and Regulatory Uncertainty: Implications for Asset Pricing",
     "authors": [
       {
@@ -1356,33 +1333,6 @@
     "pdf_id": "R_7OfQtiAM6rKD9jb",
     "abstract": "The paper, \u201cQualitative Coding with Hybrid AI and Human-in-the-Loop,\u201d outlines a novel method for using hybrid AI to facilitate qualitative coding at scale. Hybrid AI systems, like ours that combines an LLM and a knowledge graph, leverage both the power of generative AI and the explainability and consistency of symbolic AI. The process starts with human researchers qualitatively developing a codebook and manually applying it to a sample of documents from a large corpus. Next, we use an iterative human-in-the-loop process to refine the codebook by prompting an LLM, Gemini in our case, to clarify the distinctions between codes. We evaluate codebook improvement by prompting the LLM to apply the refined codes to our sample of labeled documents and examining classification metrics. We then use the LLM to extract a knowledge graph based on the subject-predicate-object relationships in descriptions of codes from the refined codebook. Finally, we incorporate the knowledge graph into LLM prompts to facilitate the automatic, linguistically nuanced, and consistent application of the codebook to the full corpus of documents. We explain how we overcame common challenges of incorporating generative AI into qualitative methods including the importance and sensitivity of context and the use of codes that are continuous, not discrete. We demonstrate the approach using publicly available annual reports from community foundations in the United States to measure institutional logics of community foundations where institutional logics are \u201chistorical patterns of cultural symbols and material practices\u201d which shape individual and organizational behavior (Thornton et al., 2012, p. 2). This research is important for scholars interested in incorporating generative AI into their workflow to qualitatively code a large corpus, using the LLM as a \u201cpartner\u201d for codebook refinement and optimal coding decisions, and enhancing the explainability and consistency of generative AI by coupling it with symbolic AI to create a hybrid system. We contend that an iterative human-in-the-loop with the LLM is a critical aspect of the coding process. The method presented in this paper can be applied across organizational contexts to develop continuous measures for the presence of qualitative codes in textual data.",
     "session_title": "Human-in-the-Loop AI",
-    "date": "Oct 2"
-  },
-  {
-    "title": "Responsible AI for Strategic Decision-Making and Capacity Building in Agribusiness",
-    "authors": [
-      {
-        "name": "Asa B. Stone",
-        "affiliation": "University of Nebraska-Lincoln/Agricultural Economics"
-      },
-      {
-        "name": "Cristi\u00e1n Kremer F.",
-        "affiliation": "Universidad de Chile"
-      }
-    ],
-    "presenter_first_name": "Asa B.",
-    "presenter_last_name": "Stone",
-    "presenter_email": "astone10@unl.edu",
-    "presenter_affiliation": "University of Nebraska-Lincoln/Agricultural Economics",
-    "presentation_room": "Pfahl 240",
-    "time": "3:00 - 4:40",
-    "reported_discipline": "Agricultural Economics",
-    "cleaned_discipline": "Agricultural Economics",
-    "best_phd_finalist": null,
-    "best_junior_faculty_finalist": null,
-    "pdf_id": "R_3r0y5l30MmcWGnR",
-    "abstract": "Agribusiness navigates signicant uncertainty arising from fluctuating water availability, weather variability, and complex resource dynamics. These challenges require innovative approaches to business decision-making and organizational adaptation. Arti\ufb01cial intelligence (AI), when developed as transparent, interpretable, and participatory systems, promises not only greater data access but also transformative capacity for agricultural businesses and producer associations. This session describes the initial phase of a research project in Chile, where academic researchers and agricultural practitioners are currently engaging in collaborative dialogue to de\ufb01ne responsible AI tools for water governance and agricultural planning. Employing a Social-Ecological-Technological Systems (SETS) framework, the project seeks to align technical innovation with the operational realities and strategic priorities of agribusiness stakeholders. The core approach is to use human-in-the-loop design to guide future technology adoption and organizational growth. Planned contributions include: \u25cf Strategic Business Decision-Making : The envisioned co-design of AI models will enable analysis of trade-o\ufb00s in water allocation, risk management, and investment, strengthening the legitimacy and impact of future business decisions. \u25cf Operational E\ufb03ciency and Risk Mitigation : Proposed AI-supported platforms aim to integrate hydrological, meteorological, geographical, and local expertise, yielding actionable insights for drought planning, irrigation scheduling, and early warning of resource trends, helping businesses shift from reactive to proactive management. \u25cf Organizational Change and Stakeholder Engagement : Planned participatory, human-in-the-loop co-design workshops are expected to foster trust, skill development, and collaborative innovation within organizations, supporting the e\ufb00ective eventual adoption of AI tools. \u25cf Reciprocal Academic\u2013Business Partnerships : The project intentionally models a mutual learning process, in which business stakeholders co-de\ufb01ne research agendas and co-create solutions with academic teams, who translate operational needs into scalable AI frameworks. Preliminary engagement indicates a strong desire among business stakeholders for responsible AI, not only to increase data transparency but also to enhance analytic and organizational capacity. This anticipated impact goes beyond technical gains, aiming to promote adaptive leadership, organizational resilience, and a culture of innovation as the project matures. By positioning agribusiness as a promising context for reciprocal academic\u2013community innovation, this work contributes directly to the conference\u2019s theme of responsible, human-centered AI in business. The session will share early frameworks, partnership strategies, and insights relevant to business and academic leaders seeking to integrate responsible AI as part of community-centered digital transformation.",
-    "session_title": "Governance & Responsible AI",
     "date": "Oct 2"
   },
   {
